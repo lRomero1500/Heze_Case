@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css?family=Patua+One|Rajdhani');
+*{
+    font-family: 'Rajdhani', sans-serif;
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+    font-style: unset;
+    outline-style: none;
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+    background: #F2F2F2;
+    font-family: Rajdhani;
+}
+h1{
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: 800;
+    color: #37474F;
+}
+h2{
+    font-size: 25px;
+    line-height: 25px;
+    font-weight: 500;
+    color: #37474F;
+}
+h3{
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 200;
+    color: #263238;
+}
+h4{
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 500;
+    color: #f5f5f5;
+}
+h5{
+    font-size: 15px;
+    line-height: 40px;
+    font-weight: 300;
+    color: #263238;
+}
+h6{
+    font-family: 'Patua One', cursive;
+    font-size: 16px;
+    font-weight: 500;
+    padding-bottom: 20px;
+    color: #333333;
+}
+p{
+    font-size: 14px;
+    font-weight: 500;
+    color: #263238;
+    line-height: 18px;
+}
+.contenedor{
+    /*width: 20% !important;
+    height: 200px;
+    border: 1px solid red;
+    margin: 20% auto!important;
+    text-align: center;*/
+    /*height: 364px;*/
+    width: 23% !important;
+    position: relative;
+    transform: translate(0px, -50%);
+    /*border: 1px solid #AA0000;*/
+    top: 50%;
+    margin: auto!important;
+    text-align: center;
+}
+.logo-login{
+    width: 100% !important;
+
+}
+.logo-login>img{
+    margin: auto!important;
+
+}
+.usps-login>h6{
+    margin-top: 10% !important;
+}
+.usps-login>div>h2{
+    margin-top: 0.5em !important;
+}
+.login-Avatar{
+    margin: auto;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background: -o-linear-gradient(top right, #0097f6 0%, #b622b5 60%);
+    background: -moz-linear-gradient(top right, #0097f6 0%, #b622b5 60%);
+    background: linear-gradient(to top right, #0097f6 0%, #b622b5 60%);
+}
+.login-Avatar h1{
+    color: #fff;
+    text-align: center;
+    line-height: 1.9em;
+}
+.login-control{
+    width: 90% !important;
+    background: none;
+    border-top:unset;
+    border-left: unset;
+    border-right: unset;
+    border-bottom: 1px solid #666666;
+    padding: 0 0.5em 0 0.5em;
+    text-align: center!important;
+    margin-bottom: 20px;
+
+}
+.login-control::-webkit-input-placeholder,
+.login-control:-moz-placeholder,
+.login-control:-ms-input-placeholder {
+    color: #808080;
+}
+
+.btn-login{
+    margin: auto;
+    background: #B522B6;
+    padding: 5px 40px 5px 40px;
+    border:unset;
+    color: #FFFFFF;
+    ffont-family: 'Patua One', cursive!important;
+    font-size: 16px!important;
+}
+.passForgot{
+    margin-top: 5% !important;
+}

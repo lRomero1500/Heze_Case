@@ -1,0 +1,69 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Usuarios;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Support\Facades\Redirect;
+
+class controlAcssController extends Controller
+{
+    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    public function index()
+    {
+        $title_page='Inicio de sesión';
+        return view('controlAcss/login',compact('title_page'));
+    }
+
+    /**
+     * @param Request $request
+     * @param $email
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function validaUsr(Request $request){
+        $email=$request->only('usrName')['usrName'];
+        $data = (Usuarios::where('email',$email)->first())['attributes'];
+        if($data!=null){
+            $nombre= (explode('/',$data['nombre_Empleado']))[2].' '.(explode('/',$data['nombre_Empleado']))[0];
+            $ini= mb_substr((explode('/',$data['nombre_Empleado']))[2],0,1).mb_substr((explode('/',$data['nombre_Empleado']))[0],0,1);
+            $msg=null;
+        }
+        else{
+            $nombre=null;
+            $ini= null;
+            $msg="Usuario No Existe";
+        }
+
+        return response()->json([
+            'nombre'=>$nombre,
+            'ini'=>$ini,
+            'msg'=>$msg
+        ]);
+    }
+    public function ingresaUsr(Request $request){
+        $email=$request->only('usrName')['usrName'];
+        $Pass=$request->only('usrPass')['usrPass'];
+        if(Auth::attempt(['email'=>$email,'password'=>$Pass])){
+            return response()->json([
+                'msg'=>'/dashboard/home',
+                'error'=>false
+            ]);
+        }
+        else{
+            return response()->json([
+                'msg'=>'Contraseña incorrecta',
+                'error'=>true
+            ]);
+        }
+
+    }
+    public function loginPath()
+    {
+        return route('/');
+    }
+
+
+}
