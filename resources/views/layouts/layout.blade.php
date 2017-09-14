@@ -8,6 +8,7 @@
     <link href="CSS/normalize.css" rel="stylesheet"/>
     <link href="CSS/styleCotizadorFrontEnd.css" rel="stylesheet" />
     <link href="CSS/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="CSS/loading.css" rel="stylesheet"/>
     @yield('headers')
 </head>
 <body>
@@ -99,6 +100,7 @@
 </body>
 <script src="/JS/modernizr.js"></script>
 <script src="/JS/jquery.js"></script>
+<script src="/JS/Util.js"></script>
 <script src="/JS/jqueryui/jquery-ui.js"></script>
 <script>
     $(document).ready(function () {
@@ -113,5 +115,6 @@
         });
     })
 </script>
+<script src="JS/loading.js"></script>
 @yield('scripts')
 </html>

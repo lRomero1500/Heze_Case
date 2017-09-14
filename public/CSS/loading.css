@@ -1,0 +1,77 @@
+/* This CSS file just define some default styles and loaders */
+/* You don't need to include it if you're working with your custom overlay loader element */
+
+.loading-overlay {
+    display: table;
+    opacity: 0.9;
+    z-index: 10!important;
+}
+
+.loading-overlay-content {
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    font-size: 1.15em;
+    font-weight: bold;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.loading-overlay.loading-theme-light {
+    background-color: #fff;
+    color: #000;
+}
+
+.loading-overlay.loading-theme-dark {
+    background-color: #000;
+    color: #fff;
+}
+.saving {
+    font-size: 40px;
+}
+
+.saving span {
+    font-size: 50px;
+    -webkit-animation-name: blink;
+    animation-name: blink;
+    -webkit-animation-duration: 1.4s;
+    animation-duration: 1.4s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.saving span:nth-child(2) {
+    -webkit-animation-delay: .2s;
+    animation-delay: .2s;
+}
+
+.saving span:nth-child(3) {
+    -webkit-animation-delay: .4s;
+    animation-delay: .4s;
+}
+
+@-webkit-keyframes blink {
+    0% {
+        opacity: .2;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        opacity: .2;
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: .2;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        opacity: .2;
+    }
+}

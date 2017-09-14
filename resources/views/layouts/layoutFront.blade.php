@@ -8,6 +8,9 @@
     <link href="CSS/normalize.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="CSS/styleCotizadorFrontEnd.css">
     <link href="CSS/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="CSS/loading.css" rel="stylesheet"/>
+    <script src="JS/loading.js"></script>
+    <script src="/JS/Util.js"></script>
 </head>
 <body style="width: 100%;margin-top: 60px;background: #f2f2f2;">
 <header class="headerFrontEnd">

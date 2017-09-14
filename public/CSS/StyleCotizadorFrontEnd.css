@@ -722,6 +722,12 @@ p{
 	font-weight: 700;
 	padding: 3px 2px 3px 8px;
 }
+.contenedorDeCampos select{
+	border: 1px solid #E7E7E7;
+	font-size: 13px;
+	font-weight: 700;
+	padding: 3px 2px 3px 8px;
+}
 .contentFormulario3Colomnas{
 	width: 525px;
 	padding: 20px 10px 10px 20px;

@@ -36,7 +36,7 @@
 
             var data= $('#login').serialize();
             var url='{!! URL::to('/').'/valida' !!}';
-
+            InicioCarando();
             $.post({
                 url:url,
                 data:data,
@@ -50,13 +50,16 @@
                         $('#Pass').show("slow");
                         $('#avatar').show("slow");
                         $('#passForgot').show("slow");
+                        FinCarando();
                     }
                     else{
+                        FinCarando();
                         alert(resp.msg);
                     }
 
                 },
                 error:function(resp,textStatus){
+                    FinCarando();
                     alert(resp);
                 }
             });
@@ -65,7 +68,7 @@
         function ingresar(){
             var data= $('#login').serialize();
             var url='{!! URL::to('/').'/ingresa' !!}';
-
+            InicioCarando();
             $.post({
                 url:url,
                 data:data,
@@ -75,9 +78,11 @@
                     }
                     else{
                         alert(resp.msg);
+                        FinCarando();
                     }
                 },
                 error:function(resp,textStatus){
+                    FinCarando();
                     alert(textStatus);
                 }
             });
