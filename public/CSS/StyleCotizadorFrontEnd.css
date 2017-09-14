@@ -431,18 +431,26 @@ p{
 	background: -o-linear-gradient(top right, #0097f6 40%, #b622b5 80%);
 	background: -moz-linear-gradient(top right, #0097f6 40%, #b622b5 80%);
 	background: linear-gradient(to top right, #0097f6 40%, #b622b5 80%);
+	cursor: pointer;
 }
 .textIcono {
 	margin-top: 1.32em;
 	color: #000 !important;
-	padding: 7px 5px 7px 3.5em;
+	padding: 7px 5px 7px 4em;
+	line-height: 1.5em;
 }
 
-
-.ConetendorAlertasArea{
+.ConetendorAlertasArea, .contenedorFormsEditCrea{
 	width: 100%;
 
 }
+.formsCreaEdit {
+	padding: 20px;
+	width: 95%;
+	border: 1px solid #dddddd;
+	margin-bottom: 0.5em;
+}
+
 .AlertasAreaNoError{
 	position: relative;
 	padding: 20px;
