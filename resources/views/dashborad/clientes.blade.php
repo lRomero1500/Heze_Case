@@ -114,7 +114,6 @@
                 $('#AlertNoError').css('display','none');
             });
             $('#AddCliente').click(function (e) {
-                e.preventDefault();
                 if($('#formulario').css('display') == 'none'){
                     $('#formulario').css('display','');
                 }

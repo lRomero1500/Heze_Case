@@ -17,7 +17,7 @@
         <form id="login" method="POST">
             {!! csrf_field() !!}
             <div id="Usr" style="">
-                <input class="login-control" type="text" name="usrName" id="usrName" placeholder="Ingrese aquí su usuario o correo electrónico"/>
+                <input class="login-control" type="text" name="usrName" id="usrName" placeholder="Ingrese aquí su usuario o correo electrónico" data-validation="email"/>
                 <input type="button" class="btn-login" value="Validar" onclick="validar();">
             </div>
             <div id="Pass" style="display: none">
@@ -32,6 +32,11 @@
 @endsection
 @section('scripts')
     <script>
+        var traduccion=Traduccion()
+        $.validate({
+            form : '#login',
+            language: traduccion
+        });
         function validar(){
 
             var data= $('#login').serialize();

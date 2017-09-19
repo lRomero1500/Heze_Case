@@ -7,10 +7,16 @@
                 <h3>Cotizador/Empresas</h3>
             </div>
             <div class="conteedorIconoAreatrabajo">
-                <a href="#"><i class="iconoAreatrabajo fa fa-plus fa-fw" aria-hidden="true"></i><h4 class="textIcono">Añadir Nuevo</h4></a>
+                <a id="AddEmpresa" style="cursor: pointer;"><i class="iconoAreatrabajo fa fa-plus fa-fw" aria-hidden="true"></i><h4 class="textIcono">Añadir Nuevo</h4></a>
+            </div>
+        </div>
+        <div id="formulario" class="contenedorFormsEditCrea" style="display: none">
+            <div class="formsCreaEdit">
+                @include('empresas.CrtEditempresas')
             </div>
         </div>
         <div class="ConetendorAlertasArea" >
+
             <div id="AlertNoError" class="AlertasAreaNoError">
                 <i id="btnCerrarAlert" style="cursor: pointer;" class="CerrarAlertasAreaNoError fa fa-times fa-fw" aria-hidden="true"></i>
                 <p>
@@ -107,7 +113,13 @@
             $('#btnCerrarAlert').click(function () {
                 $('#AlertNoError').css('display','none');
             });
+            $('#AddEmpresa').click(function (e) {
+                if($('#formulario').css('display') == 'none'){
+                    $('#formulario').css('display','');
+                }
+            })
         });
+
     </script>
 
 @endsection

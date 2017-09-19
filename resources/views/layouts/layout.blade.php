@@ -73,8 +73,8 @@
                     <li><a style="color: #f7f7f7 !important" href="#"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i><h4>CRM</h4></a>
                         <ul class="LatNavpadre">
                             <li><p  class="fa fa-circle fa-fw LatNavAletasPadres"></p><a style="color: #f7f7f7 !important" href="#"><h4>Cotizador</h4></a>
-                                <ul class="LatNavAletashijos"><li><a style="color: #f7f7f7 !important" href="dashboard/crm/clientes"><h4>Clientes</h4></a></li></ul>
                                 <ul class="LatNavHijo"><li><a style="color: #f7f7f7 !important" href="dashboard/crm/empresas"><h4>Empresa</h4></a></li></ul>
+                                <ul class="LatNavAletashijos"><li><a style="color: #f7f7f7 !important" href="dashboard/crm/clientes"><h4>Clientes</h4></a></li></ul>
                                 <ul class="LatNavHijo"><li><a style="color: #f7f7f7 !important" href="dashboard/crm/colaboradores"><h4>Colaboradores</h4></a></li></ul>
                             </li>
                         </ul>
@@ -102,6 +102,7 @@
 <script src="/JS/jquery.js"></script>
 <script src="/JS/Util.js"></script>
 <script src="/JS/jqueryui/jquery-ui.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 <script>
     $(document).ready(function () {
         $('#iconoMenuTop').mouseover(function () {

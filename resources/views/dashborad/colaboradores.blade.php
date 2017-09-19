@@ -9,7 +9,12 @@
                 <h3>Cotizador/Colaboradores</h3>
             </div>
             <div class="conteedorIconoAreatrabajo">
-                <a href="#"><i class="iconoAreatrabajo fa fa-plus fa-fw" aria-hidden="true"></i><h4 class="textIcono">Añadir Nuevo</h4></a>
+                <a id="AddColaborador" style="cursor: pointer;"><i class="iconoAreatrabajo fa fa-plus fa-fw" aria-hidden="true"></i><h4 class="textIcono">Añadir Nuevo</h4></a>
+            </div>
+        </div>
+        <div id="formulario" class="contenedorFormsEditCrea" style="display: none">
+            <div class="formsCreaEdit">
+                @include('colaboradores.credtColaboradores')
             </div>
         </div>
         <div class="ConetendorAlertasArea">
@@ -106,6 +111,11 @@
             $('#btnCerrarAlert').click(function () {
                 $('#AlertNoError').css('display','none');
             });
+            $('#AddColaborador').click(function (e) {
+                if($('#formulario').css('display') == 'none'){
+                    $('#formulario').css('display','');
+                }
+            })
         });
     </script>
 

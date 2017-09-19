@@ -717,17 +717,16 @@ p{
 	padding: 5px 0 4px 10px;
 }
 .contenedorDeCampos input{
-	border: 1px solid #E7E7E7;
+	border: 1px solid #707070;
 	font-size: 13px;
 	font-weight: 700;
 	padding: 3px 2px 3px 8px;
 }
 .contenedorDeCampos select{
-	border: 1px solid #E7E7E7;
-	font-size: 13px;
-	font-weight: 700;
-	padding: 3px 2px 3px 8px;
+	min-width: 91.5% !important;
+	text-wrap: normal;
 }
+
 .contentFormulario3Colomnas{
 	width: 525px;
 	padding: 20px 10px 10px 20px;
@@ -891,4 +890,11 @@ p{
 	background: #ffffff;
 	margin: auto;
 	width: 98%;
+}
+.labelChek
+{
+	line-height: 4em;
+	font-weight: 300;
+	font-size: 10pt;
+	color: #424c51;
 }
