@@ -18,11 +18,12 @@
     </div>
 
 </body>
-<script src="JS/modernizr.js"></script>
-<script src="JS/jquery.js"></script>
-<script src="JS/jqueryui/jquery-ui.js"></script>
-<script src="JS/loading.js"></script>
-<script src="/JS/Util.js"></script>
-<script src="JS/jquery-validator.js"></script>
+<script src="{!! URL::to('JS/modernizr.js') !!}"></script>
+<script src="{!! URL::to('JS/jquery.js') !!}"></script>
+<script src="{!! URL::to('JS/jqueryui/jquery-ui.js') !!}"></script>
+<script src="{!! URL::to('JS/jquery-validator.js') !!}"></script>
+<script src="{!! URL::to('JS/loading.js') !!}"></script>
+<script src="{!! URL::to('JS/Util.js') !!}"></script>
+
 @yield('scripts')
 </html>

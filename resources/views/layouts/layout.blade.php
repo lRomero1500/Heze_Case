@@ -9,6 +9,7 @@
     <link href="CSS/styleCotizadorFrontEnd.css" rel="stylesheet" />
     <link href="CSS/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
     <link href="CSS/loading.css" rel="stylesheet"/>
+    <link href="CSS/theme-default.min.css" rel="stylesheet"/>
     @yield('headers')
 </head>
 <body>
@@ -29,7 +30,7 @@
                         <li class="ContentNavheader">
                             <div class="Flecha"></div>
                             <ul class="Navheader">
-                                <li>
+                                {{--<li>
                                     <a style="color: #f7f7f7 !important" href="front/cotizador">
                                         <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
                                         <h4>Cotizador</h4>
@@ -40,7 +41,15 @@
                                         <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
                                         <h4>Dashboard</h4>
                                     </a>
-                                </li>
+                                </li>--}}
+                                @foreach(session('menu') as $menu)
+                                    <li>
+                                        <a style="color: #f7f7f7 !important" href="{!! $menu->url_menu !!}">
+                                            <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
+                                            <h4>{!! $menu->nom_menu !!}</h4>
+                                        </a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </li>
                     </ul>
@@ -50,7 +59,7 @@
         <div class="Avatar">
             <h1>
                 <?php
-                $ini= mb_substr((explode('/',Auth::user()->nombre_Empleado))[2],0,1).mb_substr((explode('/',Auth::user()->nombre_Empleado))[0],0,1);
+                $ini= mb_substr((explode('/',Auth::user()->empleados->nombre_Empleado))[2],0,1).mb_substr((explode('/',Auth::user()->empleados->nombre_Empleado))[0],0,1);
                 echo $ini;
                 ?>
             </h1>
@@ -58,7 +67,7 @@
         <div class="Nombre">
             <h5>
                 <?php
-                $nombre= (explode('/',Auth::user()->nombre_Empleado))[2].' '.(explode('/',Auth::user()->nombre_Empleado))[0];
+                $nombre= (explode('/',Auth::user()->empleados->nombre_Empleado))[2].' '.(explode('/',Auth::user()->empleados->nombre_Empleado))[0];
                 echo $nombre;
                 ?>
             </h5>
@@ -102,7 +111,7 @@
 <script src="/JS/jquery.js"></script>
 <script src="/JS/Util.js"></script>
 <script src="/JS/jqueryui/jquery-ui.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+<script src="JS/jquery-validator.js"></script>
 <script>
     $(document).ready(function () {
         $('#iconoMenuTop').mouseover(function () {

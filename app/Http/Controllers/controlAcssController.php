@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Empleados;
+use App\Models\Menu;
 use App\Models\Usuarios;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class controlAcssController extends Controller
 {
@@ -17,7 +20,7 @@ class controlAcssController extends Controller
         $title_page='Inicio de sesión';
         return view('controlAcss/login',compact('title_page'));
     }
-
+    public $empleado;
     /**
      * @param Request $request
      * @param $email
@@ -25,7 +28,7 @@ class controlAcssController extends Controller
      */
     public function validaUsr(Request $request){
         $email=$request->only('usrName')['usrName'];
-        $data = (Usuarios::where('email',$email)->first())['attributes'];
+        $data = (Empleados::where('email',$email)->first())['attributes'];
         if($data!=null){
             $nombre= (explode('/',$data['nombre_Empleado']))[2].' '.(explode('/',$data['nombre_Empleado']))[0];
             $ini= mb_substr((explode('/',$data['nombre_Empleado']))[2],0,1).mb_substr((explode('/',$data['nombre_Empleado']))[0],0,1);
@@ -47,6 +50,25 @@ class controlAcssController extends Controller
         $email=$request->only('usrName')['usrName'];
         $Pass=$request->only('usrPass')['usrPass'];
         if(Auth::attempt(['email'=>$email,'password'=>$Pass])){
+
+            $rol=Auth::user()->roles;
+            $deta=Auth::user()->detalle;
+            $in=[];
+            $cont=0;
+            foreach ($deta as $item)
+            {
+                $in[$cont]=$item->cod_menu;
+                $cont=$cont+1;
+            }
+            $menu=Menu::whereIn('cod_menu',$in)->orderBy('orden_menu')->get();
+            if(Session::has('menu'))
+            {
+                Session::forget('menu');
+                session(['menu'=>$menu]);
+            }
+            else
+                session(['menu'=>$menu]);
+
             return response()->json([
                 'msg'=>'/dashboard/home',
                 'error'=>false

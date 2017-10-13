@@ -16,13 +16,13 @@
 
         <form id="login" method="POST">
             {!! csrf_field() !!}
-            <div id="Usr" style="">
-                <input class="login-control" type="text" name="usrName" id="usrName" placeholder="Ingrese aquí su usuario o correo electrónico" data-validation="email"/>
-                <input type="button" class="btn-login" value="Validar" onclick="validar();">
+            <div id="Usr" style="display:block ">
+                <input class="login-control" type="text" name="usrName" id="usrName" placeholder="Ingrese aquí su correo electrónico" data-validation="email"/>
+                <input id="btnValida" type="button" class="btn-login" value="Validar" onclick="validar();">
             </div>
             <div id="Pass" style="display: none">
                 <input class="login-control" type="password" name="usrPass" id="usrPass" placeholder="Ingrese aquí su contraseña"/>
-                <input type="button" class="btn-login" value="Ingresar" onclick="ingresar();"/>
+                <input id="btnIngresa" type="button" class="btn-login" value="Ingresar" onclick="ingresar();"/>
             </div>
         </form>
     </div>
@@ -31,44 +31,64 @@
     </div>
 @endsection
 @section('scripts')
+    <script src="{!! URL::to('JS/jquery-validator.js') !!}"></script>
     <script>
+        var valido;
+        $(document).ready(function () {
+            document.addEventListener("keydown", function(event){
+                if((event.keyCode==13) && ($('#Usr').css('display') == 'block')  ){
+                    $('#btnValida').click();
+                }
+                else if((event.keyCode==13) && ($('#Pass').css('display') == '') ){
+                    $('#btnIngresa').click()
+                }
+            });
+        });
         var traduccion=Traduccion()
         $.validate({
             form : '#login',
-            language: traduccion
+            language: traduccion,
+            onElementValidate : function(valid, $el, $form, errorMess) {
+                if($el.attr('name')=='usrName')
+                {
+                    valido=valid;
+                }
+            }
+
         });
         function validar(){
+            if(valido){
+                var data= $('#login').serialize();
+                var url='{!! URL::to('/').'/valida' !!}';
 
-            var data= $('#login').serialize();
-            var url='{!! URL::to('/').'/valida' !!}';
-            InicioCarando();
-            $.post({
-                url:url,
-                data:data,
-                success: function (resp) {
-                    if(resp.msg==null){
-                        $('#textNomCont').html('');
-                        $('#textNomCont').html('Contraseña');
-                        $('#ini').html(resp.ini);
-                        $('#nomUsr').html(resp.nombre);
-                        $('#Usr').hide();
-                        $('#Pass').show("slow");
-                        $('#avatar').show("slow");
-                        $('#passForgot').show("slow");
+                InicioCarando();
+                $.post({
+                    url:url,
+                    data:data,
+                    success: function (resp) {
+                        if(resp.msg==null){
+                            $('#textNomCont').html('');
+                            $('#textNomCont').html('Contraseña');
+                            $('#ini').html(resp.ini);
+                            $('#nomUsr').html(resp.nombre);
+                            $('#Usr').hide();
+                            $('#Pass').show("slow");
+                            $('#avatar').show("slow");
+                            $('#passForgot').show("slow");
+                            FinCarando();
+                        }
+                        else{
+                            FinCarando();
+                            alert(resp.msg);
+                        }
+
+                    },
+                    error:function(resp,textStatus){
                         FinCarando();
+                        alert(resp);
                     }
-                    else{
-                        FinCarando();
-                        alert(resp.msg);
-                    }
-
-                },
-                error:function(resp,textStatus){
-                    FinCarando();
-                    alert(resp);
-                }
-            });
-
+                });
+            }
         }
         function ingresar(){
             var data= $('#login').serialize();

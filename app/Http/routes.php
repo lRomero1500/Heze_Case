@@ -19,13 +19,5 @@ Route::get('dashboard/crm/colaboradores','dashboardController@colaboradores')->m
 Route::post('valida', 'controlAcssController@validaUsr');
 Route::post('ingresa','controlAcssController@ingresaUsr');
 Route::get('front/cotizador','frontController@index')->middleware('auth');
+Route::get('error','ErrorController@index');
 
-/*Route::get('/','controlAcssController@index');
-
-Route::get('cotizador','dashboardController@cotizador');
-
-Route::get('error',function (){
-    return view('errors/503');
-});
-Route::post('valida', 'controlAcssController@validaUsr');
-Route::post('ingresa','controlAcssController@ingresaUsr');*/

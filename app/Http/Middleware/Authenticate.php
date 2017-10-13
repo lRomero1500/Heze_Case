@@ -41,6 +41,15 @@ class Authenticate
                 return redirect()->guest('acceso/login');
             }
         }
+        else if($this->auth->user())
+        {
+            $url=$request->path();
+            $menu = $request->session()->get('menu');
+            if(!($menu->where('url_menu',$url)->count()>0))
+            {
+                return redirect()->guest('errors/503');
+            }
+        }
 
         return $next($request);
     }
