@@ -14,7 +14,7 @@
         </div>
         <div id="formulario" class="contenedorFormsEditCrea" style="display: none">
             <div class="formsCreaEdit">
-                @include('colaboradores.credtColaboradores')
+                @include('colaboradores.credtColaboradoresEMB')
             </div>
         </div>
         <div class="ConetendorAlertasArea">

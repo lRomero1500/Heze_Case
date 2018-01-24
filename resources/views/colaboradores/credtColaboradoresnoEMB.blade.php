@@ -1,22 +1,23 @@
 @extends('layouts/layout')
 
+
+
 @section('content')
     <div class="AreaTrabajo">
         <div class="ContenedorAreaTop">
             <div class="tituloAreaTrabajo">
-                <h3>Cotizador/Empresas</h3>
+                <h3>Mantenimiento/Colaboradores</h3>
             </div>
             <div class="conteedorIconoAreatrabajo">
-                <a id="AddEmpresa" style="cursor: pointer;"><i class="iconoAreatrabajo fa fa-plus fa-fw" aria-hidden="true"></i><h4 class="textIcono">Añadir Nuevo</h4></a>
+                <a id="AddColaborador" style="cursor: pointer;"><i class="iconoAreatrabajo fa fa-plus fa-fw" aria-hidden="true"></i><h4 class="textIcono">Añadir Nuevo</h4></a>
             </div>
         </div>
         <div id="formulario" class="contenedorFormsEditCrea" style="display: none">
             <div class="formsCreaEdit">
-                @include('empresas.credtEmpresasEMB')
+                @include('colaboradores.credtColaboradoresEMB')
             </div>
         </div>
-        <div class="ConetendorAlertasArea" >
-
+        <div class="ConetendorAlertasArea">
             <div id="AlertNoError" class="AlertasAreaNoError">
                 <i id="btnCerrarAlert" style="cursor: pointer;" class="CerrarAlertasAreaNoError fa fa-times fa-fw" aria-hidden="true"></i>
                 <p>
@@ -81,25 +82,22 @@
                 <thead>
                 <tr>
                     <th width="2%"><input type="checkbox" /></th>
-                    <th>Empresa</th>
-                    <th>Nit</th>
                     <th>Colaborador</th>
+                    <th>Cliente</th>
                     <th>Servicio</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr >
                     <td><input type="checkbox" /></td>
-                    <td>Grupo Arcia S.A.S <div class="OpcionesTabla"><a href="#">Editar</a> <span class="SeparadorOpcionesTablas">|</span> <a href="#">Eliminar</a></div></td>
-                    <td>123456789-1</td>
-                    <td>Luis Romero</td>
+                    <td>Freddy Arcia <div class="OpcionesTabla"><a href="#">Editar</a> <span class="SeparadorOpcionesTablas">|</span> <a href="#">Eliminar</a></div></td>
+                    <td>Grupo Arcia S.A.S</td>
                     <td>Desarrollo Web</td>
                 </tr>
                 <tr >
                     <td><input type="checkbox" /></td>
-                    <td>Grupo Arcia S.A.S <div class="OpcionesTabla"><a href="#">Editar</a> <span class="SeparadorOpcionesTablas">|</span> <a href="#">Eliminar</a></div></td>
-                    <td>123456789-1</td>
-                    <td>Luis Romero</td>
+                    <td>Luis Romero <div class="OpcionesTabla"><a href="#">Editar</a> <span class="SeparadorOpcionesTablas">|</span> <a href="#">Eliminar</a></div></td>
+                    <td>Grupo Arcia S.A.S</td>
                     <td>Desarrollo Web</td>
                 </tr>
                 </tbody>
@@ -113,13 +111,12 @@
             $('#btnCerrarAlert').click(function () {
                 $('#AlertNoError').css('display','none');
             });
-            $('#AddEmpresa').click(function (e) {
+            $('#AddColaborador').click(function (e) {
                 if($('#formulario').css('display') == 'none'){
                     $('#formulario').css('display','');
                 }
             })
         });
-
     </script>
 
 @endsection

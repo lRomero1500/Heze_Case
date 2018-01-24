@@ -21,3 +21,8 @@ Route::post('ingresa','controlAcssController@ingresaUsr');
 Route::get('front/cotizador','frontController@index')->middleware('auth');
 Route::get('error','ErrorController@index');
 
+/*--------------------------Inicio-Mantenimiento--------------------------*/
+/*Route::get('dashboard/mant/clientes','companiasController@index')->middleware('auth');*/
+Route::get('dashboard/mant/empresas','companiasController@index')->middleware('auth');
+/*Route::get('dashboard/mant/colaboradores','companiasController@index')->middleware('auth');*/
+/*----------------------------Fin-Mantenimiento----------------------------*/

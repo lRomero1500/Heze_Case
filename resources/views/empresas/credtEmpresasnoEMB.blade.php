@@ -4,7 +4,7 @@
     <div class="AreaTrabajo">
         <div class="ContenedorAreaTop">
             <div class="tituloAreaTrabajo">
-                <h3>Cotizador/Empresas</h3>
+                <h3>Mantenimiento/Empresas</h3>
             </div>
             <div class="conteedorIconoAreatrabajo">
                 <a id="AddEmpresa" style="cursor: pointer;"><i class="iconoAreatrabajo fa fa-plus fa-fw" aria-hidden="true"></i><h4 class="textIcono">Añadir Nuevo</h4></a>
@@ -36,7 +36,6 @@
                         </td>
                     </tr>
                 </table>
-
             </div>
         </div>
         <div class="ContenedorOpcionesFIltroArea">
@@ -79,29 +78,29 @@
         <div class="ContenedorTablaArea">
             <table class="TablasArea">
                 <thead>
-                <tr>
-                    <th width="2%"><input type="checkbox" /></th>
-                    <th>Empresa</th>
-                    <th>Nit</th>
-                    <th>Colaborador</th>
-                    <th>Servicio</th>
-                </tr>
+                    <tr>
+                        <th width="2%"><input type="checkbox" /></th>
+                        <th width="20%">Empresa</th>
+                        <th width="19%">Nit</th>
+                        <th width="19%">Telefono</th>
+                        <th width="20%">Correo</th>
+                        <th width="20%">Direccion</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr >
-                    <td><input type="checkbox" /></td>
-                    <td>Grupo Arcia S.A.S <div class="OpcionesTabla"><a href="#">Editar</a> <span class="SeparadorOpcionesTablas">|</span> <a href="#">Eliminar</a></div></td>
-                    <td>123456789-1</td>
-                    <td>Luis Romero</td>
-                    <td>Desarrollo Web</td>
-                </tr>
-                <tr >
-                    <td><input type="checkbox" /></td>
-                    <td>Grupo Arcia S.A.S <div class="OpcionesTabla"><a href="#">Editar</a> <span class="SeparadorOpcionesTablas">|</span> <a href="#">Eliminar</a></div></td>
-                    <td>123456789-1</td>
-                    <td>Luis Romero</td>
-                    <td>Desarrollo Web</td>
-                </tr>
+                    @foreach($Companias as $compania)
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td>{!! $compania->nomb_Companias !!}
+                            <div class="OpcionesTabla"><a href="#">Editar</a> <span class="SeparadorOpcionesTablas">|</span>
+                            <a href="#">Eliminar</a></div>
+                            </td>
+                            <td>{!! $compania->nit_Companias !!}</td>
+                            <td>{!! $compania->tel_Companias !!}</td>
+                            <td>{!! $compania->correo_companias !!}</td>
+                            <td>{!! $compania->direccion_companias !!}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -119,7 +118,6 @@
                 }
             })
         });
-
     </script>
 
 @endsection

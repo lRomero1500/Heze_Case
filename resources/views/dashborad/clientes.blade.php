@@ -13,7 +13,7 @@
         </div>
         <div id="formulario" class="contenedorFormsEditCrea" style="display: none">
             <div class="formsCreaEdit">
-                @include('clientes.credtclientes')
+                @include('clientes.credtclientesEMB')
             </div>
         </div>
         <div class="ConetendorAlertasArea" style="">

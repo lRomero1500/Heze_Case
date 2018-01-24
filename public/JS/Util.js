@@ -130,5 +130,60 @@ function Traduccion() {
     };
     return myLanguage;
 }
+function ValidaFormulario(form) {
+    try
+    {
+        var resp= new mensajeValidacion(false);
+        resp.fallo=false;
+        $.each(form.elements,function (index,item) {
+            var a = item.getAttribute('requerido');
+            if((item.getAttribute('requerido'))=="true")
+            {
+                if(item.tagName=='INPUT')
+                {
+                    if(item.type=='text')
+                    {
+                        if(item.value==""){
+                            resp.fallo=true;
+                            resp.mensajes.push("Complete los campos en rojo");
+                            item.setAttribute('style','border-color:red');
+                        }
 
+                    }
+                    else if(item.type=='checkbox')
+                    {
+                        if(item.checked ==false){
+                            resp.fallo=true;
+                            resp.mensajes.push("Complete los campos en rojo");
+                            item.setAttribute('style','border-color:red');
+                        }
+                    }
+                    else if(item.type=='radio')
+                    {
+                        if(item.checked ==false){
+                            resp.fallo=true;
+                            resp.mensajes.push("Complete los campos en rojo");
+                            item.setAttribute('style','border-color:red');
+                        }
+                    }
+                }
+                else if(item.tagName=='SELECT')
+                {
+
+                }
+            }
+        });
+        return resp;
+    }
+    catch (err)
+    {
+        alert(err);
+    }
+
+}
+function mensajeValidacion(fallo)
+{
+    this.fallo=fallo;
+    this.mensajes=[];
+}
 
