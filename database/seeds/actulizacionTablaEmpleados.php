@@ -13,6 +13,7 @@ class actulizacionTablaEmpleados extends Seeder
     {
         DB::table('Cotz_Empleados')->update([
             'password' => bcrypt('Arepa300'),
+            'created_at' => new DateTime
         ]);
     }
 }

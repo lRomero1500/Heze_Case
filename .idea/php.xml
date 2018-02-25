@@ -84,7 +84,16 @@
       <path value="$PROJECT_DIR$/vendor/bllim/laravel-to-jquery-validation" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="5.5.0" />
+  <component name="PhpProjectServersManager">
+    <servers>
+      <server host="localhost" id="6d74542a-b49f-4498-80a8-c8b673e46a11" name="XAMP" port="8000">
+        <path_mappings>
+          <mapping local-root="$PROJECT_DIR$" remote-root="D:/PHPstormProjects/Heze_Case" />
+        </path_mappings>
+      </server>
+    </servers>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
   <component name="PhpUnit">
     <phpunit_settings>
       <PhpUnitSettings load_method="PHPUNIT_PHAR" custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" phpunit_phar_path="C:/xampp/php/phpunit" />
