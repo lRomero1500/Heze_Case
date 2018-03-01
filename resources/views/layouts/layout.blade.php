@@ -42,11 +42,12 @@
                                         <h4>Dashboard</h4>
                                     </a>
                                 </li>--}}
-                                @foreach(session('menu') as $menu)
+                                <?php $menu=session('menu') ; ?>
+                                @foreach($menu->where('pos_menu',2) as $item)
                                     <li>
-                                        <a style="color: #f7f7f7 !important" href="{!! $menu->url_menu !!}">
+                                        <a style="color: #f7f7f7 !important" href="{!! $item->url_menu !!}">
                                             <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
-                                            <h4>{!! $menu->nom_menu !!}</h4>
+                                            <h4>{!! $item->nom_menu !!}</h4>
                                         </a>
                                     </li>
                                 @endforeach
@@ -79,15 +80,32 @@
         <div class="ContentMenuLat">
             <div class="ContentLatNav">
                 <nav class="LatNav">
-                    <li><a style="color: #f7f7f7 !important" href="#"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i><h4>CRM</h4></a>
-                        <ul class="LatNavpadre">
-                            <li><p  class="fa fa-circle fa-fw LatNavAletasPadres"></p><a style="color: #f7f7f7 !important" href="#"><h4>Cotizador</h4></a>
-                                <ul class="LatNavHijo"><li><a style="color: #f7f7f7 !important" href="dashboard/crm/empresas"><h4>Empresa</h4></a></li></ul>
-                                <ul class="LatNavAletashijos"><li><a style="color: #f7f7f7 !important" href="dashboard/crm/clientes"><h4>Clientes</h4></a></li></ul>
-                                <ul class="LatNavHijo"><li><a style="color: #f7f7f7 !important" href="dashboard/crm/colaboradores"><h4>Colaboradores</h4></a></li></ul>
-                            </li>
-                        </ul>
-                    </li>
+                    @foreach(($menu->where('pos_menu',1)->where('cod_menu_padre',0)) as $item2)
+                        <li>
+                            <a style="color: #f7f7f7 !important" href="{!! $item2->url_menu !!}"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i><h4>{!! $item2->nom_menu !!}</h4></a>
+
+                            @if(($menu->where('cod_menu_padre',$item2->cod_menu)->where('pos_menu',1))->count()>0)
+                                <ul class="LatNavpadre">
+                                    <li>
+                                        <p  class="fa fa-circle fa-fw LatNavAletasPadres"></p><a style="color: #f7f7f7 !important" href="#"><h4>Cotizador</h4></a>
+                                        @foreach(($menu->where('cod_menu_padre',$item2->cod_menu)->where('pos_menu',1)) as $item3)
+                                            {{--<p  class="fa fa-circle fa-fw LatNavAletasPadres"></p><a style="color: #f7f7f7 !important" href="#"><h4>Cotizador</h4></a>
+                                            <ul class="LatNavHijo"><li><a style="color: #f7f7f7 !important" href="dashboard/crm/empresas"><h4>Empresa</h4></a></li></ul>
+                                            <ul class="LatNavAletashijos"><li><a style="color: #f7f7f7 !important" href="dashboard/crm/clientes"><h4>Clientes</h4></a></li></ul>--}}
+                                            <ul class="LatNavHijo"><li><a style="color: #f7f7f7 !important" href="{!! $item3->url_menu !!}"><h4>{!! $item3->nom_menu !!}</h4></a></li></ul>
+                                        @endforeach
+                                    </li>
+                                </ul>
+                            @endif
+                        </li>
+                        {{--<li>
+                            <a style="color: #f7f7f7 !important" href="{!! $menu->url_menu !!}">
+                                <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
+                                <h4>{!! $menu->nom_menu !!}</h4>
+                            </a>
+                        </li>--}}
+                    @endforeach
+
                 </nav>
             </div>
         </div>

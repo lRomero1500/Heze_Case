@@ -60,7 +60,7 @@ class controlAcssController extends Controller
                 $in[$cont]=$item->cod_menu;
                 $cont=$cont+1;
             }
-            $menu=Menu::whereIn('cod_menu',$in)->orderBy('orden_menu')->get();
+            $menu=Menu::whereIn('cod_menu',$in)->where('activo',1)->orderBy('orden_menu')->get();
             if(Session::has('menu'))
             {
                 Session::forget('menu');
@@ -70,7 +70,7 @@ class controlAcssController extends Controller
                 session(['menu'=>$menu]);
 
             return response()->json([
-                'msg'=>'/dashboard/home',
+                'msg'=>'/',
                 'error'=>false
             ]);
         }
