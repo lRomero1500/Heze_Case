@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Companias;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -29,6 +30,25 @@ class dashboardController extends Controller
     public function cotizador(){
         $title_page='Dashboard';
         return view('dashborad/cotizador',compact('title_page'));
+    }
+
+    public function  CreatEditEmpresa(Request $request){
+        $companias= new Companias();
+        $companias->fill($request->all());
+        try{
+            $x=$companias->save();
+            return response()->json([
+                'msg'=>'Transacción exitosa!',
+                'error'=>true
+            ]);
+        }
+        catch (\Exception $e){
+            return response()->json([
+                'msg'=>'Error: '.$e,
+                'error'=>true
+            ]);
+        }
+
     }
 
 }

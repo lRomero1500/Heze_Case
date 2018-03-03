@@ -20,6 +20,7 @@ Route::post('valida', 'controlAcssController@validaUsr');
 Route::post('ingresa','controlAcssController@ingresaUsr');
 Route::get('front/cotizador','frontController@index')->middleware('auth');
 Route::get('error','ErrorController@index');
+Route::post('CreaEditEmpresa','dashboardController@CreatEditEmpresa');
 
 /*--------------------------Inicio-Mantenimiento--------------------------*/
 /*Route::get('dashboard/mant/clientes','companiasController@index')->middleware('auth');*/

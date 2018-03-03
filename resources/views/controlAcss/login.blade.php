@@ -39,7 +39,7 @@
                 if((event.keyCode==13) && ($('#Usr').css('display') == 'block')  ){
                     $('#btnValida').click();
                 }
-                else if((event.keyCode==13) && ($('#Pass').css('display') == '') ){
+                else if((event.keyCode==13) && ($('#Pass').css('display') == 'block') ){
                     $('#btnIngresa').click()
                 }
             });
@@ -54,7 +54,6 @@
                     valido=valid;
                 }
             }
-
         });
         function validar(){
             if(valido){

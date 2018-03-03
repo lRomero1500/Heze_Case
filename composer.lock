@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5bd1077aba85caf15e5b9aa4bda3395a",
+    "content-hash": "de3293cc6efdb9247c4835bbe201e063",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -1718,6 +1718,42 @@
                 "shell"
             ],
             "time": "2016-03-09T05:03:14+00:00"
+        },
+        {
+            "name": "robinherbots/jquery.inputmask",
+            "version": "4.0.0-beta.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RobinHerbots/Inputmask.git",
+                "reference": "21eb61145890a5ed5c4c059e1f9e15c56584b917"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RobinHerbots/Inputmask/zipball/21eb61145890a5ed5c4c059e1f9e15c56584b917",
+                "reference": "21eb61145890a5ed5c4c059e1f9e15c56584b917",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Robin Herbots"
+                }
+            ],
+            "description": "Inputmask is a javascript library which creates an input mask.  Inputmask can run against vanilla javascript, jQuery and jqlite.",
+            "homepage": "http://robinherbots.github.io/Inputmask",
+            "keywords": [
+                "form",
+                "input",
+                "inputmask",
+                "jquery",
+                "mask",
+                "plugins"
+            ],
+            "time": "2018-02-13T07:35:37+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -4371,7 +4407,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "doctrine/dbal": 20
+        "doctrine/dbal": 20,
+        "robinherbots/jquery.inputmask": 10
     },
     "prefer-stable": false,
     "prefer-lowest": false,

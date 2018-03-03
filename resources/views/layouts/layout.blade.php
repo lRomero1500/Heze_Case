@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="{!! URL::to('/').'/' !!}"/>
     <link href="CSS/normalize.css" rel="stylesheet"/>
-    <link href="CSS/styleCotizadorFrontEnd.css" rel="stylesheet" />
+    <link href="CSS/styleCotizadorFrontEnd.css" rel="stylesheet"/>
     <link href="CSS/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
     <link href="CSS/loading.css" rel="stylesheet"/>
     <link href="CSS/theme-default.min.css" rel="stylesheet"/>
@@ -42,7 +42,7 @@
                                         <h4>Dashboard</h4>
                                     </a>
                                 </li>--}}
-                                <?php $menu=session('menu') ; ?>
+                                <?php $menu = session('menu'); ?>
                                 @foreach($menu->where('pos_menu',2) as $item)
                                     <li>
                                         <a style="color: #f7f7f7 !important" href="{!! $item->url_menu !!}">
@@ -60,7 +60,7 @@
         <div class="Avatar">
             <h1>
                 <?php
-                $ini= mb_substr((explode('/',Auth::user()->empleados->nombre_Empleado))[2],0,1).mb_substr((explode('/',Auth::user()->empleados->nombre_Empleado))[0],0,1);
+                $ini = mb_substr((explode('/', Auth::user()->empleados->nombre_Empleado))[2], 0, 1) . mb_substr((explode('/', Auth::user()->empleados->nombre_Empleado))[0], 0, 1);
                 echo $ini;
                 ?>
             </h1>
@@ -68,7 +68,7 @@
         <div class="Nombre">
             <h5>
                 <?php
-                $nombre= (explode('/',Auth::user()->empleados->nombre_Empleado))[2].' '.(explode('/',Auth::user()->empleados->nombre_Empleado))[0];
+                $nombre = (explode('/', Auth::user()->empleados->nombre_Empleado))[2] . ' ' . (explode('/', Auth::user()->empleados->nombre_Empleado))[0];
                 echo $nombre;
                 ?>
             </h5>
@@ -82,17 +82,24 @@
                 <nav class="LatNav">
                     @foreach(($menu->where('pos_menu',1)->where('cod_menu_padre',0)) as $item2)
                         <li>
-                            <a style="color: #f7f7f7 !important" href="{!! $item2->url_menu !!}"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i><h4>{!! $item2->nom_menu !!}</h4></a>
+                            <a style="color: #f7f7f7 !important" href="{!! $item2->url_menu !!}"><i
+                                        class="fa fa-pencil fa-fw" aria-hidden="true"></i>
+                                <h4>{!! $item2->nom_menu !!}</h4></a>
 
                             @if(($menu->where('cod_menu_padre',$item2->cod_menu)->where('pos_menu',1))->count()>0)
                                 <ul class="LatNavpadre">
                                     <li>
-                                        <p  class="fa fa-circle fa-fw LatNavAletasPadres"></p><a style="color: #f7f7f7 !important" href="#"><h4>Cotizador</h4></a>
+                                        <p class="fa fa-circle fa-fw LatNavAletasPadres"></p><a
+                                                style="color: #f7f7f7 !important" href="#"><h4>Cotizador</h4></a>
                                         @foreach(($menu->where('cod_menu_padre',$item2->cod_menu)->where('pos_menu',1)) as $item3)
                                             {{--<p  class="fa fa-circle fa-fw LatNavAletasPadres"></p><a style="color: #f7f7f7 !important" href="#"><h4>Cotizador</h4></a>
                                             <ul class="LatNavHijo"><li><a style="color: #f7f7f7 !important" href="dashboard/crm/empresas"><h4>Empresa</h4></a></li></ul>
                                             <ul class="LatNavAletashijos"><li><a style="color: #f7f7f7 !important" href="dashboard/crm/clientes"><h4>Clientes</h4></a></li></ul>--}}
-                                            <ul class="LatNavHijo"><li><a style="color: #f7f7f7 !important" href="{!! $item3->url_menu !!}"><h4>{!! $item3->nom_menu !!}</h4></a></li></ul>
+                                            <ul class="LatNavHijo">
+                                                <li><a style="color: #f7f7f7 !important"
+                                                       href="{!! $item3->url_menu !!}"><h4>{!! $item3->nom_menu !!}</h4>
+                                                    </a></li>
+                                            </ul>
                                         @endforeach
                                     </li>
                                 </ul>
@@ -118,7 +125,8 @@
 
 <footer style="position: absolute!important" class="FooterFrontEnd">
     <div class="ContenedorTextDerechosFooter">
-        <p class="TextDerechosFooter">&copy {!! date('Y') !!} Creado por Grupo Arcia S.A.S- Prohibida su reproducción total o parcial | <a href="https://arciait.com" class="red">Arciait</a></p>
+        <p class="TextDerechosFooter">&copy {!! date('Y') !!} Creado por Grupo Arcia S.A.S- Prohibida su reproducción
+            total o parcial | <a href="https://arciait.com" class="red">Arciait</a></p>
     </div>
     <div class="ContenedorImgFooter">
         <img class="imgFooterLogo" src="Img/Logo_Lateral_hezecase.png">
@@ -127,22 +135,25 @@
 </body>
 <script src="/JS/modernizr.js"></script>
 <script src="/JS/jquery.js"></script>
-<script src="/JS/Util.js"></script>
 <script src="/JS/jqueryui/jquery-ui.js"></script>
-<script src="JS/jquery-validator.js"></script>
+<script src="/JS/jquery-validator.js"></script>
+<script src="/JS/loading.js"></script>
+<script src="/JS/jquery.inputmask.js"></script>
+<script src="/JS/phone.js"></script>
+<script src="/JS/Util.js"></script>
 <script>
     $(document).ready(function () {
         $('#iconoMenuTop').mouseover(function () {
-            $('#menuTop').attr('class','');
-            $('#menuTop').attr('class','ContentNavheaderActivo');
+            $('#menuTop').attr('class', '');
+            $('#menuTop').attr('class', 'ContentNavheaderActivo');
 //            $('#menuTop').show( 'slide',{direction:'up',distance: 40});
         });
         $('#menuTop').mouseleave(function () {
-            $('#menuTop').attr('class','');
-            $('#menuTop').attr('class','ContentNavheader');
+            $('#menuTop').attr('class', '');
+            $('#menuTop').attr('class', 'ContentNavheader');
         });
     })
 </script>
-<script src="JS/loading.js"></script>
 @yield('scripts')
+@yield('scriptsEMB')
 </html>
