@@ -35,11 +35,13 @@ class dashboardController extends Controller
     public function  CreatEditEmpresa(Request $request){
         $companias= new Companias();
         $companias->fill($request->all());
+        $order=array('(',')','-');
+        $companias->tel_Companias= str_replace($order,'',$companias->tel_Companias);
         try{
             $x=$companias->save();
             return response()->json([
-                'msg'=>'Transacción exitosa!',
-                'error'=>true
+                'msg'=>'La empresa '.$companias->nomb_Companias.' ha sido creada exitosamente!',
+                'error'=>false
             ]);
         }
         catch (\Exception $e){

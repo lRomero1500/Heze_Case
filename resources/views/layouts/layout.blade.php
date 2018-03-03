@@ -138,7 +138,9 @@
 <script src="/JS/jqueryui/jquery-ui.js"></script>
 <script src="/JS/jquery-validator.js"></script>
 <script src="/JS/loading.js"></script>
+<script src="/JS/inputmask.js"></script>
 <script src="/JS/jquery.inputmask.js"></script>
+<script src="/JS/inputmask.extensions.js"></script>
 <script src="/JS/phone.js"></script>
 <script src="/JS/Util.js"></script>
 <script>

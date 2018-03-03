@@ -262,7 +262,7 @@ function ValidaFormulario(form) {
     }
 
 }
-function ResetForm(form, numero, e) {
+function ResetForm(form, e) {
     e.preventDefault();
     try {
 
@@ -331,4 +331,4 @@ function crearMask(cls) {
 }
 function destruirMask(cls) {
     $('.' + cls + '').inputmask('remove');
-}s
+}

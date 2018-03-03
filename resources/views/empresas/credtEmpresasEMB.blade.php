@@ -15,7 +15,7 @@
                 <input name="cor_Empresa" type="mail" value="" placeholder="">
             </div>
             <div class="campoCorto"><h5>Teléfono</h5>
-                <input name="tel_Companias" type="text" value="" placeholder="" requerido="true">
+                <input class="tel" name="tel_Companias" type="text" value="" placeholder="" requerido="true">
             </div>
             <div class="campoCorto"><h5>Dirección</h5>
                 <input name="direccion_companias" type="text" value="" placeholder="" requerido="true">
@@ -50,6 +50,50 @@
             }
             else {
                 var data = $('#empresa').serialize();
+                var url = '{!! URL::to('/').'/CreaEditEmpresa' !!}';
+                $.post({
+                    url: url,
+                    data: data,
+                    success: function (resp) {
+                        if (resp.msg != null) {
+                            if (!resp.error) {
+                                ResetForm($('#empresa')[0], event);
+                                $('#errores').css('color', '#37474F');
+                                $('#errores').html('');
+                                $('#errores').css('visibility', 'none');
+                                $('#formulario').css('display', 'none');
+                                destruirMask('tel');
+                                $('#ContenedorAltertas').append(
+                                    "<div id='AlertNoError' class='AlertasAreaNoError'>" +
+                                    "<i id='btnCerrarAlert' style='cursor: pointer;'" +
+                                    " class='CerrarAlertasAreaNoError fa fa-times fa-fw' aria-hidden='true'></i>" +
+                                    "<p>" + resp.msg + " </p></div>"
+                                );
+                            }
+                            else {
+                                $('#errores').css('visibility', '');
+                                $('#errores').css('color', 'red');
+                                $('#errores').html('');
+                                $('#errores').html(resp.msg);
+                            }
+
+                            FinCarando();
+                        }
+                        else {
+                            FinCarando();
+                            $('#errores').css('visibility', '');
+                            $('#errores').html('');
+                            $('#errores').html(resp.msg);
+                        }
+
+                    },
+                    error: function (resp, textStatus) {
+                        FinCarando();
+                        $('#errores').css('visibility', '');
+                        $('#errores').html('');
+                        $('#errores').html('Error' + resp.msg);
+                    }
+                });
             }
 
         }

@@ -17,7 +17,7 @@
                 @include('empresas.credtEmpresasEMB')
             </div>
         </div>
-        <div class="ConetendorAlertasArea">
+        <div id="ContenedorAltertas" class="ConetendorAlertasArea">
 
             <div id="AlertNoError" class="AlertasAreaNoError">
                 <i id="btnCerrarAlert" style="cursor: pointer;" class="CerrarAlertasAreaNoError fa fa-times fa-fw"
@@ -131,6 +131,7 @@
             $('#AddEmpresa').click(function (e) {
                 if ($('#formulario').css('display') == 'none') {
                     $('#formulario').css('display', '');
+                    crearMask('tel');
                 }
             })
         });
