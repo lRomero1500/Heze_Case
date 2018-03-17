@@ -17,11 +17,13 @@
         <form id="login" method="POST">
             {!! csrf_field() !!}
             <div id="Usr" style="display:block ">
-                <input class="login-control" type="text" name="usrName" id="usrName" placeholder="Ingrese aquí su correo electrónico" data-validation="email"/>
+                <input class="login-control" type="text" name="usrName" id="usrName"
+                       placeholder="Ingrese aquí su correo electrónico" data-validation="email" data-validation-event="keyup"/>
                 <input id="btnValida" type="button" class="btn-login" value="Validar" onclick="validar();">
             </div>
             <div id="Pass" style="display: none">
-                <input class="login-control" type="password" name="usrPass" id="usrPass" placeholder="Ingrese aquí su contraseña"/>
+                <input class="login-control" type="password" name="usrPass" id="usrPass"
+                       placeholder="Ingrese aquí su contraseña" data-validation="required" data-validation-event="keyup"/>
                 <input id="btnIngresa" type="button" class="btn-login" value="Ingresar" onclick="ingresar();"/>
             </div>
         </form>
@@ -31,41 +33,46 @@
     </div>
 @endsection
 @section('scripts')
-    <script src="{!! URL::to('JS/jquery-validator.js') !!}"></script>
     <script>
-        var valido;
+        var mailValido;
+        var PasValido;
         $(document).ready(function () {
-            document.addEventListener("keydown", function(event){
-                if((event.keyCode==13) && ($('#Usr').css('display') == 'block')  ){
+            $('#usrName').focus();
+            document.addEventListener("keydown", function (event) {
+                if ((event.keyCode == 13) && ($('#Usr').css('display') == 'block')) {
                     $('#btnValida').click();
                 }
-                else if((event.keyCode==13) && ($('#Pass').css('display') == 'block') ){
+                else if ((event.keyCode == 13) && ($('#Pass').css('display') == 'block')) {
                     $('#btnIngresa').click()
                 }
             });
         });
-        var traduccion=Traduccion()
+        var traduccion = Traduccion();
         $.validate({
-            form : '#login',
+            form: '#login',
             language: traduccion,
-            onElementValidate : function(valid, $el, $form, errorMess) {
-                if($el.attr('name')=='usrName')
-                {
-                    valido=valid;
+            validateOnEvent:true,
+            onElementValidate: function (valid, $el, $form, errorMess) {
+                if ($el.attr('name') == 'usrName') {
+                    mailValido = valid;
+                }
+                else if ($el.attr('name') == 'usrPass'){
+                    PasValido=valid;
                 }
             }
         });
-        function validar(){
-            if(valido){
-                var data= $('#login').serialize();
-                var url='{!! URL::to('/').'/valida' !!}';
+
+        function validar() {
+            if (mailValido) {
+                var data = $('#login').serialize();
+                var url = '{!! URL::to('/').'/valida' !!}';
 
                 InicioCarando();
                 $.post({
-                    url:url,
-                    data:data,
+                    url: url,
+                    data: data,
                     success: function (resp) {
-                        if(resp.msg==null){
+                        if (resp.msg == null) {
                             $('#textNomCont').html('');
                             $('#textNomCont').html('Contraseña');
                             $('#ini').html(resp.ini);
@@ -74,42 +81,45 @@
                             $('#Pass').show("slow");
                             $('#avatar').show("slow");
                             $('#passForgot').show("slow");
+                            $('#usrPass').focus();
                             FinCarando();
                         }
-                        else{
+                        else {
                             FinCarando();
                             alert(resp.msg);
                         }
 
                     },
-                    error:function(resp,textStatus){
+                    error: function (resp, textStatus) {
                         FinCarando();
                         alert(resp);
                     }
                 });
             }
         }
-        function ingresar(){
-            var data= $('#login').serialize();
-            var url='{!! URL::to('/').'/ingresa' !!}';
-            InicioCarando();
-            $.post({
-                url:url,
-                data:data,
-                success: function (resp) {
-                    if(!resp.error){
-                        window.location.href = '{!! URL::to('/')!!}'+resp.msg;
-                    }
-                    else{
-                        alert(resp.msg);
+        function ingresar() {
+            if(PasValido){
+                var data = $('#login').serialize();
+                var url = '{!! URL::to('/').'/ingresa' !!}';
+                InicioCarando();
+                $.post({
+                    url: url,
+                    data: data,
+                    success: function (resp) {
+                        if (!resp.error) {
+                            window.location.href = '{!! URL::to('/')!!}' + resp.msg;
+                        }
+                        else {
+                            alert(resp.msg);
+                            FinCarando();
+                        }
+                    },
+                    error: function (resp, textStatus) {
                         FinCarando();
+                        alert(textStatus);
                     }
-                },
-                error:function(resp,textStatus){
-                    FinCarando();
-                    alert(textStatus);
-                }
-            });
+                });
+            }
         }
     </script>
 @endsection

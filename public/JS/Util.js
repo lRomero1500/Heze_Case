@@ -7,6 +7,18 @@ function InicioCarando() {
 function FinCarando() {
     $('body').loading('stop');
 }
+var bootstrap = function (evt) {
+    if (evt.target.readyState === "complete") { FinCarando(); }
+}
+$(document).ready()
+{
+    document.addEventListener('readystatechange', bootstrap, false);
+}
+$(window).bind('beforeunload', function () {
+    if(!$('body').is(':loading') ){
+        InicioCarando();
+    }
+});
 var caracteres = new Array("Ñ", "Á", "É", "Í", "Ó", "Ú", " "); //Arreglo con los caracteres permitidos para validar una cadena de solo letras
 var getEl = function (elementId) {
     return document.getElementById(elementId);
@@ -162,9 +174,11 @@ function validaValorFlo(objTxt) {
         objTxt.value = parseFloat(objTxt.value)
     objTxt.value = objTxt.value.replace(/\./, ',')
 }
+
 function Traduccion() {
     var myLanguage = {
         errorTitle: 'Envio de formulario fallido!',
+        requiredField:"Este Campo es requerido",
         requiredFields: 'No ha completado todos los campos requeridos',
         badTime: 'No ha proporcionado un tiempo correcto',
         badEmail: 'No ha proporcionado una direccion de correo valida',
