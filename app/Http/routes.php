@@ -20,10 +20,11 @@ Route::post('valida', 'controlAcssController@validaUsr');
 Route::post('ingresa','controlAcssController@ingresaUsr');
 Route::get('front/cotizador','frontController@index')->middleware('auth');
 Route::get('error','ErrorController@index');
-Route::post('CreaEditEmpresa','dashboardController@CreatEditEmpresa');
+Route::post('CreaEditEmpresa','dashboardController@CreatEditEmpresa')->middleware('auth');
 
 /*--------------------------Inicio-Mantenimiento--------------------------*/
 /*Route::get('dashboard/mant/clientes','companiasController@index')->middleware('auth');*/
 Route::get('dashboard/mant/empresas','companiasController@index')->middleware('auth');
+Route::put('getEmpresa','companiasController@show');
 /*Route::get('dashboard/mant/colaboradores','companiasController@index')->middleware('auth');*/
 /*----------------------------Fin-Mantenimiento----------------------------*/

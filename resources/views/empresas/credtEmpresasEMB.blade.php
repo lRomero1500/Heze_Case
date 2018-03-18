@@ -97,7 +97,57 @@
             }
 
         }
+        function editEmpresa(idEmpresa) {
+            var url = '{!! URL::to('/').'/getEmpresa' !!}';
+            $.ajax({
+                type: "PUT",
+                url: url,
+                headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
+                data: {
+                    'id': idEmpresa,
+                },
+                dataType: "JSON",
+                success: function (resp) {
+                    if (resp.msg != null) {
+                        if (!resp.error) {
+                            ResetForm($('#empresa')[0], event);
+                            $('#errores').css('color', '#37474F');
+                            $('#errores').html('');
+                            $('#errores').css('visibility', 'none');
+                            $('#formulario').css('display', 'none');
+                            destruirMask('tel');
+                            $('#ContenedorAltertas').append(
+                                "<div id='AlertNoError' class='AlertasAreaNoError'>" +
+                                "<i id='btnCerrarAlert' style='cursor: pointer;'" +
+                                " class='CerrarAlertasAreaNoError fa fa-times fa-fw' aria-hidden='true'></i>" +
+                                "<p>" + resp.msg + " </p></div>"
+                            );
+                        }
+                        else {
+                            $('#errores').css('visibility', '');
+                            $('#errores').css('color', 'red');
+                            $('#errores').html('');
+                            $('#errores').html(resp.msg);
+                        }
 
+                        FinCarando();
+                    }
+                    else {
+                        FinCarando();
+                        $('#errores').css('visibility', '');
+                        $('#errores').html('');
+                        $('#errores').html(resp.msg);
+                    }
+
+                },
+                error: function (resp, textStatus) {
+                    FinCarando();
+                    $('#errores').css('visibility', '');
+                    $('#errores').html('');
+                    $('#errores').html('Error' + resp.msg);
+                }
+            });
+        }
     </script>
 @endsection
 

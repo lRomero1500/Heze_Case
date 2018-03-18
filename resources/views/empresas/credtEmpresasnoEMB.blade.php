@@ -7,7 +7,9 @@
                 <h3>Mantenimiento/Empresas</h3>
             </div>
             <div class="conteedorIconoAreatrabajo">
-                <a id="AddEmpresa" style="cursor: pointer;"><i class="iconoAreatrabajo fa fa-plus fa-fw" aria-hidden="true"></i><h4 class="textIcono">Añadir Nuevo</h4></a>
+                <a id="AddEmpresa" style="cursor: pointer;"><i class="iconoAreatrabajo fa fa-plus fa-fw"
+                                                               aria-hidden="true"></i><h4 class="textIcono">Añadir
+                        Nuevo</h4></a>
             </div>
         </div>
         <div id="formulario" class="contenedorFormsEditCrea" style="display: none">
@@ -15,12 +17,16 @@
                 @include('empresas.credtEmpresasEMB')
             </div>
         </div>
-        <div class="ConetendorAlertasArea" >
+        <div class="ConetendorAlertasArea">
 
             <div id="AlertNoError" class="AlertasAreaNoError">
-                <i id="btnCerrarAlert" style="cursor: pointer;" class="CerrarAlertasAreaNoError fa fa-times fa-fw" aria-hidden="true"></i>
+                <i id="btnCerrarAlert" style="cursor: pointer;" class="CerrarAlertasAreaNoError fa fa-times fa-fw"
+                   aria-hidden="true"></i>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Superiores tres erant, quae esse possent, quarum est una sola defensa, eaque vehementer. Omnia contraria, quos etiam insanos esse vultis. Non autem hoc: igitur ne illud quidem. Istam voluptatem, inquit, Epicurus ignorat? Ergo instituto veterum, quo etiam Stoici utuntur.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Superiores tres erant, quae esse possent,
+                    quarum est una sola defensa, eaque vehementer. Omnia contraria, quos etiam insanos esse vultis. Non
+                    autem hoc: igitur ne illud quidem. Istam voluptatem, inquit, Epicurus ignorat? Ergo instituto
+                    veterum, quo etiam Stoici utuntur.
                 </p>
             </div>
             <div class="AlertasAreaError" style="display: none">
@@ -31,7 +37,10 @@
                         </td>
                         <td style="padding: 20px;text-align: justify;vertical-align: middle">
                             <p style="text-wrap: none">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Superiores tres erant, quae esse possent, quarum est una sola defensa, eaque vehementer. Omnia contraria, quos etiam insanos esse vultis. Non autem hoc: igitur ne illud quidem. Istam voluptatem, inquit, Epicurus ignorat? Ergo instituto veterum, quo etiam Stoici utuntur.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Superiores tres erant, quae
+                                esse possent, quarum est una sola defensa, eaque vehementer. Omnia contraria, quos etiam
+                                insanos esse vultis. Non autem hoc: igitur ne illud quidem. Istam voluptatem, inquit,
+                                Epicurus ignorat? Ergo instituto veterum, quo etiam Stoici utuntur.
                             </p>
                         </td>
                     </tr>
@@ -78,29 +87,30 @@
         <div class="ContenedorTablaArea">
             <table class="TablasArea">
                 <thead>
-                    <tr>
-                        <th width="2%"><input type="checkbox" /></th>
-                        <th width="20%">Empresa</th>
-                        <th width="19%">Nit</th>
-                        <th width="19%">Telefono</th>
-                        <th width="20%">Correo</th>
-                        <th width="20%">Direccion</th>
-                    </tr>
+                <tr>
+                    <th width="2%"><input type="checkbox"/></th>
+                    <th width="20%">Empresa</th>
+                    <th width="19%">Nit</th>
+                    <th width="19%">Telefono</th>
+                    <th width="20%">Correo</th>
+                    <th width="20%">Direccion</th>
+                </tr>
                 </thead>
                 <tbody>
-                    @foreach($Companias as $compania)
-                        <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>{!! $compania->nomb_Companias !!}
-                            <div class="OpcionesTabla"><a href="#">Editar</a> <span class="SeparadorOpcionesTablas">|</span>
-                            <a href="#">Eliminar</a></div>
-                            </td>
-                            <td>{!! $compania->nit_Companias !!}</td>
-                            <td>{!! $compania->tel_Companias !!}</td>
-                            <td>{!! $compania->correo_companias !!}</td>
-                            <td>{!! $compania->direccion_companias !!}</td>
-                        </tr>
-                    @endforeach
+                @foreach($Companias as $compania)
+                    <tr>
+                        <td><input type="checkbox"/></td>
+                        <td>{!! $compania->nomb_Companias !!}
+                            <div class="OpcionesTabla"><a onclick="editEmpresa({!! $compania->cod_Companias !!});">Editar</a> <span
+                                        class="SeparadorOpcionesTablas">|</span>
+                                <a href="#">Eliminar</a></div>
+                        </td>
+                        <td>{!! $compania->nit_Companias !!}</td>
+                        <td>{!! $compania->tel_Companias !!}</td>
+                        <td>{!! $compania->correo_companias !!}</td>
+                        <td>{!! $compania->direccion_companias !!}</td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
@@ -108,13 +118,14 @@
 @endsection
 @section('scripts')
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             $('#btnCerrarAlert').click(function () {
-                $('#AlertNoError').css('display','none');
+                $('#AlertNoError').css('display', 'none');
             });
             $('#AddEmpresa').click(function (e) {
-                if($('#formulario').css('display') == 'none'){
-                    $('#formulario').css('display','');
+                if ($('#formulario').css('display') == 'none') {
+                    $('#formulario').css('display', '');
+                    crearMask('tel');
                 }
             })
         });

@@ -45,7 +45,7 @@ class companiasController extends Controller
      */
     public function show($id)
     {
-        //
+        $idCompania=$id;
     }
 
     /**
@@ -56,7 +56,7 @@ class companiasController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
