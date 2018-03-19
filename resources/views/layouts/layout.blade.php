@@ -4,7 +4,6 @@
     <title>{!! $title_page !!} :: Hezecase</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="_token" content="{{ csrf_token() }}"/>
     <base href="{!! URL::to('/').'/' !!}"/>
     <link href="CSS/normalize.css" rel="stylesheet"/>
     <link href="CSS/styleCotizadorFrontEnd.css" rel="stylesheet"/>
@@ -144,19 +143,6 @@
 <script src="/JS/inputmask.extensions.js"></script>
 <script src="/JS/phone.js"></script>
 <script src="/JS/Util.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#iconoMenuTop').mouseover(function () {
-            $('#menuTop').attr('class', '');
-            $('#menuTop').attr('class', 'ContentNavheaderActivo');
-//            $('#menuTop').show( 'slide',{direction:'up',distance: 40});
-        });
-        $('#menuTop').mouseleave(function () {
-            $('#menuTop').attr('class', '');
-            $('#menuTop').attr('class', 'ContentNavheader');
-        });
-    })
-</script>
 @yield('scripts')
 @yield('scriptsEMB')
 </html>

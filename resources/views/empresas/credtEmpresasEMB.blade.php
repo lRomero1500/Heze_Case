@@ -5,23 +5,24 @@
             <h2>Datos de la empresa</h2>
         </div>
         <div class="contenedorDeCampos">
+            <input id="idcompanias"  name="cod_Companias" type="hidden" value="0" />
             <div class="campoCorto"><h5>Razón social</h5>
-                <input name="nomb_Companias" type="text" value="" placeholder="" requerido="true" style="">
+                <input id="nomb_Companias" name="nomb_Companias" type="text" value="" placeholder="" requerido="true" style="">
             </div>
             <div class="campoCorto"><h5>Nit</h5>
-                <input name="nit_Companias" type="text" value="" placeholder="" requerido="true">
+                <input  id="nit_Companias" name="nit_Companias" type="text" value="" placeholder="" requerido="true">
             </div>
             <div class="campoCorto"><h5>Correo</h5>
-                <input name="cor_Empresa" type="mail" value="" placeholder="">
+                <input  id="cor_Empresa" name="cor_Empresa" type="mail" value="" placeholder="">
             </div>
             <div class="campoCorto"><h5>Teléfono</h5>
-                <input class="tel" name="tel_Companias" type="text" value="" placeholder="" requerido="true">
+                <input  id="tel_Companias" class="tel" name="tel_Companias" type="text" value="" placeholder="" requerido="true">
             </div>
             <div class="campoCorto"><h5>Dirección</h5>
-                <input name="direccion_companias" type="text" value="" placeholder="" requerido="true">
+                <input id="direccion_companias"  name="direccion_companias" type="text" value="" placeholder="" requerido="true">
             </div>
             <div class="campoCorto"><h5>Logo</h5>
-                <input name="logo_companias" type="text" value="" placeholder="">
+                <input  id="logo_companias" name="logo_companias" type="text" value="" placeholder="">
             </div>
         </div>
     </div>
@@ -98,53 +99,37 @@
 
         }
         function editEmpresa(idEmpresa) {
-            var url = '{!! URL::to('/').'/getEmpresa' !!}';
+            InicioCarando();
+            var url = '{!! URL::to('/').'/getEmpresa' !!}/';
             $.ajax({
-                type: "PUT",
-                url: url,
-                headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
-                data: {
-                    'id': idEmpresa,
-                },
-                dataType: "JSON",
+                type: "GET",
+                url: url + idEmpresa,
                 success: function (resp) {
-                    if (resp.msg != null) {
-                        if (!resp.error) {
-                            ResetForm($('#empresa')[0], event);
-                            $('#errores').css('color', '#37474F');
-                            $('#errores').html('');
-                            $('#errores').css('visibility', 'none');
-                            $('#formulario').css('display', 'none');
-                            destruirMask('tel');
-                            $('#ContenedorAltertas').append(
-                                "<div id='AlertNoError' class='AlertasAreaNoError'>" +
-                                "<i id='btnCerrarAlert' style='cursor: pointer;'" +
-                                " class='CerrarAlertasAreaNoError fa fa-times fa-fw' aria-hidden='true'></i>" +
-                                "<p>" + resp.msg + " </p></div>"
-                            );
+                    if (resp != null&&resp!=undefined) {
+                        if ($('#formulario').css('display') == 'none') {
+                            $('#formulario').css('display', '');
+                            crearMask('tel');
                         }
-                        else {
-                            $('#errores').css('visibility', '');
-                            $('#errores').css('color', 'red');
-                            $('#errores').html('');
-                            $('#errores').html(resp.msg);
-                        }
-
-                        FinCarando();
+                        ResetForm($('#empresa')[0], event);
+                        $('#idcompanias').prop('value',resp.cod_Companias);
+                        $('#nomb_Companias').val(resp.nomb_Companias);
+                        $('#nit_Companias').val(resp.nit_Companias);
+                        $('#cor_Empresa').val(resp.cor_Empresa);
+                        $('#tel_Companias').val(resp.tel_Companias);
+                        $('#direccion_companias').val(resp.direccion_companias);
                     }
                     else {
-                        FinCarando();
                         $('#errores').css('visibility', '');
                         $('#errores').html('');
-                        $('#errores').html(resp.msg);
+                        $('#errores').html('Ocurrio un error, Comuniquese con el departamento de soporte');
                     }
-
+                    FinCarando();
                 },
                 error: function (resp, textStatus) {
                     FinCarando();
                     $('#errores').css('visibility', '');
                     $('#errores').html('');
-                    $('#errores').html('Error' + resp.msg);
+                    $('#errores').html('Error' + textStatus);
                 }
             });
         }

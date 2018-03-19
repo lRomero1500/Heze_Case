@@ -346,3 +346,24 @@ function crearMask(cls) {
 function destruirMask(cls) {
     $('.' + cls + '').inputmask('remove');
 }
+
+$(document).ready(function () {
+    $('#iconoMenuTop').mouseover(function () {
+        $('#menuTop').attr('class', '');
+        $('#menuTop').attr('class', 'ContentNavheaderActivo');
+//            $('#menuTop').show( 'slide',{direction:'up',distance: 40});
+    });
+    $('#menuTop').mouseleave(function () {
+        $('#menuTop').attr('class', '');
+        $('#menuTop').attr('class', 'ContentNavheader');
+    });
+    $('#btnCerrarAlert').click(function () {
+        $('#AlertNoError').css('display', 'none');
+    });
+    $('#AddEmpresa').click(function (e) {
+        if ($('#formulario').css('display') == 'none') {
+            $('#formulario').css('display', '');
+            crearMask('tel');
+        }
+    })
+});

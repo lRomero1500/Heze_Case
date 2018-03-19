@@ -117,18 +117,4 @@
     </div>
 @endsection
 @section('scripts')
-    <script>
-        $(document).ready(function () {
-            $('#btnCerrarAlert').click(function () {
-                $('#AlertNoError').css('display', 'none');
-            });
-            $('#AddEmpresa').click(function (e) {
-                if ($('#formulario').css('display') == 'none') {
-                    $('#formulario').css('display', '');
-                    crearMask('tel');
-                }
-            })
-        });
-    </script>
-
 @endsection

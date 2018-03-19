@@ -24,6 +24,6 @@
 <script src="{!! URL::to('JS/jquery-validator.js') !!}"></script>
 <script src="{!! URL::to('JS/loading.js') !!}"></script>
 <script src="{!! URL::to('JS/Util.js') !!}"></script>
-
+<script src="{!! URL::to('JS/ContAcceso/login.js') !!}"></script>
 @yield('scripts')
 </html>
