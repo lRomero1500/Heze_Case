@@ -54,9 +54,11 @@ class companiasController extends Controller
                 $CompaniasUp->logo_companias=$companias->logo_companias;
                 $CompaniasUp->correo_companias=$companias->correo_companias;
                 $CompaniasUp->save();
+                $dat=Companias::all();
                 return response()->json([
                     'msg' => 'La empresa ' . $companias->nomb_Companias . ' se modifico  exitosamente!',
-                    'error' => false
+                    'error' => false,
+                    'table'=>$dat
                 ]);
             }
 

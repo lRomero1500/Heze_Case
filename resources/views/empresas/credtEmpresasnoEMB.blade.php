@@ -96,14 +96,15 @@
                     <th width="20%">Direccion</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="tbCompanias">
                 @foreach($Companias as $compania)
                     <tr>
                         <td><input type="checkbox"/></td>
                         <td>{!! $compania->nomb_Companias !!}
-                            <div class="OpcionesTabla"><a onclick="editEmpresa({!! $compania->cod_Companias !!});">Editar</a> <span
-                                        class="SeparadorOpcionesTablas">|</span>
-                                <a href="#">Eliminar</a></div>
+                            <div class="OpcionesTabla"><a onclick="editEmpresa({!! $compania->cod_Companias !!});">Editar</a>
+                                <span class="SeparadorOpcionesTablas">|</span>
+                                <a href="#">Eliminar</a>
+                            </div>
                         </td>
                         <td>{!! $compania->nit_Companias !!}</td>
                         <td>{!! $compania->tel_Companias !!}</td>

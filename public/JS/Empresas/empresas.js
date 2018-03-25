@@ -30,10 +30,25 @@ function guardar(e) {
                         destruirMask('tel');
                         $('#ContenedorAltertas').append(
                             "<div id='AlertResp' class='AlertasAreaNoError'>" +
-                            "<i id='btnCerraResp' style='cursor: pointer;'" +
+                            "<i onclick='cerrarResp();' style='cursor: pointer;'" +
                             " class='CerrarAlertasAreaNoError fa fa-times fa-fw' aria-hidden='true'></i>" +
                             "<p>" + resp.msg + " </p></div>"
                         );
+                       $('#tbCompanias').html('');
+                        var tb="";
+                        $.each(resp.table,function (index,item) {
+                            tb+='<tr><td><input type="checkbox"/></td><td>'+item.nomb_Companias+
+                                '<div class="OpcionesTabla">' +
+                                '<a onclick="editEmpresa('+item.cod_Companias+');">Editar</a>' +
+                                '<span class="SeparadorOpcionesTablas">|</span><a href="#">Eliminar</a>' +
+                                '</div></td><td>'+item.nit_Companias+'</td>' +
+                                '<td>'+item.tel_Companias+'</td>' +
+                                '<td>'+item.correo_companias+'</td>' +
+                                '<td>'+item.direccion_companias+'</td></tr>';
+
+                        });
+                        $('#tbCompanias').html(tb);
+                        FinCarando();
                     }
                     else {
                         $('#errores').css('visibility', '');

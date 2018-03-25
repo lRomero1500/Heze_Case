@@ -361,9 +361,7 @@ $(document).ready(function () {
     $('#btnCerrarAlert').click(function () {
         $('#AlertNoError').css('display', 'none');
     });
-    $('#btnCerraResp').click(function () {
-        $('#AlertResp').css('display', 'none');
-    });
+
     $('#AddEmpresa').click(function (e) {
         if ($('#formulario').css('display') == 'none') {
             $('#formulario').css('display', '');
@@ -371,3 +369,6 @@ $(document).ready(function () {
         }
     })
 });
+function cerrarResp() {
+    $('#AlertResp').remove();
+}
