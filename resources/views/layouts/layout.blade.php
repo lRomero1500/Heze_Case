@@ -121,6 +121,7 @@
         <img class="imgFooterLogo" src="Img/Logo_Lateral_hezecase.png">
     </div>
 </footer>
+<div id="Confirm" style="display: none" title="Confirmacion">¿Desea eliminar este registro?</div>
 </body>
 <script src="/JS/modernizr.js"></script>
 <script src="/JS/jquery.js"></script>
@@ -133,6 +134,7 @@
 <script src="/JS/phone.js"></script>
 <script src="/JS/Util.js"></script>
 <script src="/JS/Empresas/empresas.js"></script>
+<script src="/JS/jqueryui/ui/widgets/dialog.js"></script>
 @yield('scripts')
 @yield('scriptsEMB')
 </html>

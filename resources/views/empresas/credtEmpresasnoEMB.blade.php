@@ -103,7 +103,7 @@
                         <td>{!! $compania->nomb_Companias !!}
                             <div class="OpcionesTabla"><a onclick="editEmpresa({!! $compania->cod_Companias !!});">Editar</a>
                                 <span class="SeparadorOpcionesTablas">|</span>
-                                <a href="#">Eliminar</a>
+                                <a onclick="eliminarEmpresa({!! $compania->cod_Companias !!});">Eliminar</a>
                             </div>
                         </td>
                         <td>{!! $compania->nit_Companias !!}</td>

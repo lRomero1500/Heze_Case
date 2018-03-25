@@ -102,7 +102,7 @@ class companiasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
@@ -113,6 +113,20 @@ class companiasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            $companias=Companias::find($id);
+            Companias::destroy($id);
+            return response()->json([
+                'msg' => 'La empresa ' . $companias->nomb_Companias . ' se eliminó correctamente!',
+                'error' => false
+            ]);
+        }
+        catch (Exception $e){
+            return response()->json([
+                'msg' => 'Error! '. $e->getMessage(),
+                'error' => true
+            ]);
+
+        }
     }
 }

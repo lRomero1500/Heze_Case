@@ -26,5 +26,6 @@ Route::get('error','ErrorController@index');
 Route::get('dashboard/mant/empresas','companiasController@index')->middleware('auth');
 Route::get('getEmpresa/{id}','companiasController@show');
 Route::post('CreaEditEmpresa','companiasController@store');
+Route::get('deleteEmpresa/{id}','companiasController@destroy');
 /*Route::get('dashboard/mant/colaboradores','companiasController@index')->middleware('auth');*/
 /*----------------------------Fin-Mantenimiento----------------------------*/
