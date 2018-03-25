@@ -1,3 +1,4 @@
+var baseUrl = document.getElementsByTagName('base')[0].href;
 function InicioCarando() {
     $('body').loading({
         message: '<p style="color:#151515 !important;"class="saving">Procesando<span>.</span><span>.</span><span>.</span></p>',
@@ -359,6 +360,9 @@ $(document).ready(function () {
     });
     $('#btnCerrarAlert').click(function () {
         $('#AlertNoError').css('display', 'none');
+    });
+    $('#btnCerraResp').click(function () {
+        $('#AlertResp').css('display', 'none');
     });
     $('#AddEmpresa').click(function (e) {
         if ($('#formulario').css('display') == 'none') {

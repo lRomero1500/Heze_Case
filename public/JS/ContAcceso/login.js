@@ -32,7 +32,7 @@ $.validate({
 function validar() {
     if (mailValido) {
         var data = $('#login').serialize();
-        var url = "/valida";
+        var url = baseUrl+"valida";
 
         InicioCarando();
         $.post({
@@ -67,14 +67,14 @@ function validar() {
 function ingresar() {
     if(PasValido){
         var data = $('#login').serialize();
-        var url = "/ingresa";
+        var url = baseUrl+"ingresa";
         InicioCarando();
         $.post({
             url: url,
             data: data,
             success: function (resp) {
                 if (!resp.error) {
-                    window.location.href = '/' + resp.msg;
+                    window.location.href = baseUrl + resp.msg;
                 }
                 else {
                     alert(resp.msg);

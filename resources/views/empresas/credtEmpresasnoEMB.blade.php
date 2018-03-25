@@ -17,7 +17,7 @@
                 @include('empresas.credtEmpresasEMB')
             </div>
         </div>
-        <div class="ConetendorAlertasArea">
+        <div id="ContenedorAltertas" class="ConetendorAlertasArea">
 
             <div id="AlertNoError" class="AlertasAreaNoError">
                 <i id="btnCerrarAlert" style="cursor: pointer;" class="CerrarAlertasAreaNoError fa fa-times fa-fw"

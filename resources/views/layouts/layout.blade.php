@@ -30,22 +30,11 @@
                         <li class="ContentNavheader">
                             <div class="Flecha"></div>
                             <ul class="Navheader">
-                                {{--<li>
-                                    <a style="color: #f7f7f7 !important" href="front/cotizador">
-                                        <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
-                                        <h4>Cotizador</h4>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a style="color: #f7f7f7 !important" href="{!! URL::to('/').'/' !!}">
-                                        <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
-                                        <h4>Dashboard</h4>
-                                    </a>
-                                </li>--}}
                                 <?php $menu = session('menu'); ?>
                                 @foreach($menu->where('pos_menu',2) as $item)
                                     <li>
-                                        <a style="color: #f7f7f7 !important" href="{!! $item->url_menu !!}">
+                                        <a style="color: #f7f7f7 !important"
+                                           href="@if($item->url_menu=='/'){!! '' !!} @else {!! $item->url_menu !!} @endif">
                                             <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
                                             <h4>{!! $item->nom_menu !!}</h4>
                                         </a>
@@ -143,6 +132,7 @@
 <script src="/JS/inputmask.extensions.js"></script>
 <script src="/JS/phone.js"></script>
 <script src="/JS/Util.js"></script>
+<script src="/JS/Empresas/empresas.js"></script>
 @yield('scripts')
 @yield('scriptsEMB')
 </html>

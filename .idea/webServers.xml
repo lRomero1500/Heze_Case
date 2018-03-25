@@ -5,6 +5,9 @@
       <webServer id="f7ffd2d2-958b-4105-a482-e2374227f254" name="localhost" url="http://localhost:8000/">
         <fileTransfer port="0" mountedRoot="D:\PHPstormProjects\Heze_Case" accessType="MOUNT" />
       </webServer>
+      <webServer id="1ab68073-2a1e-4317-9b44-c33780f872b2" name="XAMP" url="http://localhost:9080/hezecase">
+        <fileTransfer port="0" mountedRoot="C:\xampp\htdocs\hezecase" accessType="MOUNT" />
+      </webServer>
     </option>
   </component>
 </project>
