@@ -41,24 +41,26 @@ class companiasController extends Controller
         try {
             if ($companias->cod_Companias == '0') {
                 $x = $companias->save();
+                $dat = Companias::all();
                 return response()->json([
-                    'msg' => 'La empresa ' . $companias->nomb_Companias . ' ha sido creada exitosamente!',
-                    'error' => false
+                    'msg' => 'La empresa ' . $companias->nomb_Companias . ' se creo  exitosamente!',
+                    'error' => false,
+                    'table' => $dat
                 ]);
             } else {
                 $CompaniasUp = Companias::find($companias->cod_Companias);
-                $CompaniasUp->nomb_Companias=$companias->nomb_Companias;
-                $CompaniasUp->nit_Companias=$companias->nit_Companias;
-                $CompaniasUp->tel_Companias=$companias->tel_Companias;
-                $CompaniasUp->direccion_companias=$companias->direccion_companias;
-                $CompaniasUp->logo_companias=$companias->logo_companias;
-                $CompaniasUp->correo_companias=$companias->correo_companias;
+                $CompaniasUp->nomb_Companias = $companias->nomb_Companias;
+                $CompaniasUp->nit_Companias = $companias->nit_Companias;
+                $CompaniasUp->tel_Companias = $companias->tel_Companias;
+                $CompaniasUp->direccion_companias = $companias->direccion_companias;
+                $CompaniasUp->logo_companias = $companias->logo_companias;
+                $CompaniasUp->correo_companias = $companias->correo_companias;
                 $CompaniasUp->save();
-                $dat=Companias::all();
+                $dat = Companias::all();
                 return response()->json([
                     'msg' => 'La empresa ' . $companias->nomb_Companias . ' se modifico  exitosamente!',
                     'error' => false,
-                    'table'=>$dat
+                    'table' => $dat
                 ]);
             }
 
@@ -113,17 +115,28 @@ class companiasController extends Controller
      */
     public function destroy($id)
     {
-        try{
-            $companias=Companias::find($id);
-            Companias::destroy($id);
+        try {
+            $companias = Companias::where('cod_Companias', $id)->first();;
+            if($companias){
+                Companias::destroy($id);
+                $dat=Companias::all();
+                return response()->json([
+                    'msg' => 'La empresa ' . $companias->nomb_Companias . ' se eliminó correctamente!',
+                    'error' => false,
+                    'table'=>$dat
+                ]);
+            }
+            else{
+                return response()->json([
+                    'msg' => 'La empresa ' . $companias->nomb_Companias . ' no existe!',
+                    'error' => true
+                ]);
+            }
+
+
+        } catch (Exception $e) {
             return response()->json([
-                'msg' => 'La empresa ' . $companias->nomb_Companias . ' se eliminó correctamente!',
-                'error' => false
-            ]);
-        }
-        catch (Exception $e){
-            return response()->json([
-                'msg' => 'Error! '. $e->getMessage(),
+                'msg' => 'Error! ' . $e->getMessage(),
                 'error' => true
             ]);
 

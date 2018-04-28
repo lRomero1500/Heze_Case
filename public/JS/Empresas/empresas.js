@@ -112,7 +112,6 @@ function editEmpresa(idEmpresa) {
         }
     });
 }
-
 function eliminarEmpresa(idEmpresa) {
     InicioCarando();
     var url = baseUrl + 'deleteEmpresa/';
@@ -123,6 +122,7 @@ function eliminarEmpresa(idEmpresa) {
                 $.ajax({
                     type: 'POST',
                     url: url + idEmpresa,
+                    headers:{'X-CSRF-TOKEN':token},
                     data: JSON.stringify(parametros),
                     contentType: 'application/json; charset=UTF-8',
                     dataType: 'json',
@@ -135,6 +135,21 @@ function eliminarEmpresa(idEmpresa) {
                                     " class='CerrarAlertasAreaNoError fa fa-times fa-fw' aria-hidden='true'></i>" +
                                     "<p>" + resp.msg + " </p></div>"
                                 );
+                                $('#tbCompanias').html('');
+                                var tb = "";
+                                $.each(resp.table, function (index, item) {
+                                    tb += '<tr><td><input type="checkbox"/></td><td>' + item.nomb_Companias +
+                                        '<div class="OpcionesTabla">' +
+                                        '<a onclick="editEmpresa(' + item.cod_Companias + ');">Editar</a>' +
+                                        '<span class="SeparadorOpcionesTablas">|</span><a href="#">Eliminar</a>' +
+                                        '</div></td><td>' + item.nit_Companias + '</td>' +
+                                        '<td>' + item.tel_Companias + '</td>' +
+                                        '<td>' + item.correo_companias + '</td>' +
+                                        '<td>' + item.direccion_companias + '</td></tr>';
+
+                                });
+                                $('#tbCompanias').html(tb);
+                                $("#Confirm").dialog("close");
                                 FinCarando();
                             }
                             else {
@@ -148,6 +163,7 @@ function eliminarEmpresa(idEmpresa) {
                                     '<p style="text-wrap: none">'+resp.msg+'</p>' +
                                     '</td></tr></table></div>'
                                 );
+                                $("#Confirm").dialog("close");
                                 FinCarando();
                             }
                         }

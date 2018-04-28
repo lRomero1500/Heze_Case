@@ -4,12 +4,13 @@
     <title>{!! $title_page !!} :: Hezecase</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="token" content="{{ csrf_token() }}">
     <base href="{!! URL::to('/').'/' !!}"/>
     <link href="CSS/normalize.css" rel="stylesheet"/>
     <link href="CSS/styleCotizadorFrontEnd.css" rel="stylesheet"/>
     <link href="CSS/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
     <link href="CSS/loading.css" rel="stylesheet"/>
-    <link href="CSS/theme-default.min.css" rel="stylesheet"/>
+    <link href="CSS/themes/base/jquery-ui.css" rel="stylesheet"/>
     @yield('headers')
 </head>
 <body>

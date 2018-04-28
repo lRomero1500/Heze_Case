@@ -1,7 +1,5 @@
 @extends('layouts/layout')
 
-
-
 @section('content')
     <div class="AreaTrabajo">
         <div class="ContenedorAreaTop">
@@ -9,7 +7,9 @@
                 <h3>Mantenimiento/Colaboradores</h3>
             </div>
             <div class="conteedorIconoAreatrabajo">
-                <a id="AddColaborador" style="cursor: pointer;"><i class="iconoAreatrabajo fa fa-plus fa-fw" aria-hidden="true"></i><h4 class="textIcono">Añadir Nuevo</h4></a>
+                <a id="AddColaborador" style="cursor: pointer;"><i class="iconoAreatrabajo fa fa-plus fa-fw"
+                                                                   aria-hidden="true"></i><h4 class="textIcono">Añadir
+                        Nuevo</h4></a>
             </div>
         </div>
         <div id="formulario" class="contenedorFormsEditCrea" style="display: none">
@@ -19,9 +19,13 @@
         </div>
         <div class="ConetendorAlertasArea">
             <div id="AlertNoError" class="AlertasAreaNoError">
-                <i id="btnCerrarAlert" style="cursor: pointer;" class="CerrarAlertasAreaNoError fa fa-times fa-fw" aria-hidden="true"></i>
+                <i id="btnCerrarAlert" style="cursor: pointer;" class="CerrarAlertasAreaNoError fa fa-times fa-fw"
+                   aria-hidden="true"></i>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Superiores tres erant, quae esse possent, quarum est una sola defensa, eaque vehementer. Omnia contraria, quos etiam insanos esse vultis. Non autem hoc: igitur ne illud quidem. Istam voluptatem, inquit, Epicurus ignorat? Ergo instituto veterum, quo etiam Stoici utuntur.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Superiores tres erant, quae esse possent,
+                    quarum est una sola defensa, eaque vehementer. Omnia contraria, quos etiam insanos esse vultis. Non
+                    autem hoc: igitur ne illud quidem. Istam voluptatem, inquit, Epicurus ignorat? Ergo instituto
+                    veterum, quo etiam Stoici utuntur.
                 </p>
             </div>
             <div class="AlertasAreaError" style="display: none">
@@ -32,7 +36,10 @@
                         </td>
                         <td style="padding: 20px;text-align: justify;vertical-align: middle">
                             <p style="text-wrap: none">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Superiores tres erant, quae esse possent, quarum est una sola defensa, eaque vehementer. Omnia contraria, quos etiam insanos esse vultis. Non autem hoc: igitur ne illud quidem. Istam voluptatem, inquit, Epicurus ignorat? Ergo instituto veterum, quo etiam Stoici utuntur.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Superiores tres erant, quae
+                                esse possent, quarum est una sola defensa, eaque vehementer. Omnia contraria, quos etiam
+                                insanos esse vultis. Non autem hoc: igitur ne illud quidem. Istam voluptatem, inquit,
+                                Epicurus ignorat? Ergo instituto veterum, quo etiam Stoici utuntur.
                             </p>
                         </td>
                     </tr>
@@ -81,22 +88,28 @@
             <table class="TablasArea">
                 <thead>
                 <tr>
-                    <th width="2%"><input type="checkbox" /></th>
+                    <th width="2%"><input type="checkbox"/></th>
                     <th>Colaborador</th>
                     <th>Cliente</th>
                     <th>Servicio</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr >
-                    <td><input type="checkbox" /></td>
-                    <td>Freddy Arcia <div class="OpcionesTabla"><a href="#">Editar</a> <span class="SeparadorOpcionesTablas">|</span> <a href="#">Eliminar</a></div></td>
+                <tr>
+                    <td><input type="checkbox"/></td>
+                    <td>Freddy Arcia
+                        <div class="OpcionesTabla"><a href="#">Editar</a> <span class="SeparadorOpcionesTablas">|</span>
+                            <a href="#">Eliminar</a></div>
+                    </td>
                     <td>Grupo Arcia S.A.S</td>
                     <td>Desarrollo Web</td>
                 </tr>
-                <tr >
-                    <td><input type="checkbox" /></td>
-                    <td>Luis Romero <div class="OpcionesTabla"><a href="#">Editar</a> <span class="SeparadorOpcionesTablas">|</span> <a href="#">Eliminar</a></div></td>
+                <tr>
+                    <td><input type="checkbox"/></td>
+                    <td>Luis Romero
+                        <div class="OpcionesTabla"><a href="#">Editar</a> <span class="SeparadorOpcionesTablas">|</span>
+                            <a href="#">Eliminar</a></div>
+                    </td>
                     <td>Grupo Arcia S.A.S</td>
                     <td>Desarrollo Web</td>
                 </tr>
@@ -107,13 +120,13 @@
 @endsection
 @section('scripts')
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             $('#btnCerrarAlert').click(function () {
-                $('#AlertNoError').css('display','none');
+                $('#AlertNoError').css('display', 'none');
             });
             $('#AddColaborador').click(function (e) {
-                if($('#formulario').css('display') == 'none'){
-                    $('#formulario').css('display','');
+                if ($('#formulario').css('display') == 'none') {
+                    $('#formulario').css('display', '');
                 }
             })
         });

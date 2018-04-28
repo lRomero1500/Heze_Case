@@ -1,4 +1,5 @@
 var baseUrl = document.getElementsByTagName('base')[0].href;
+var token= $('meta[name="token"]').attr('content');
 function InicioCarando() {
     $('body').loading({
         message: '<p style="color:#151515 !important;"class="saving">Procesando<span>.</span><span>.</span><span>.</span></p>',
