@@ -369,6 +369,11 @@ $(document).ready(function () {
             crearMask('tel');
         }
     })
+    $('#AddColaborador').click(function (e) {
+        if ($('#formulario').css('display') == 'none') {
+            $('#formulario').css('display', '');
+        }
+    })
 });
 function cerrarResp() {
     $('#AlertResp').remove();

@@ -13,7 +13,7 @@ class colaboradoresController extends Controller
     {
         $title_page = 'Mantenimiento de Colaboradores';
         $Colaboradores = Empleados::all();
-        return view('empresas/credtEmpresasnoEMB')->with([
+        return view('colaboradores/credtColaboradoresnoEMB')->with([
             'title_page' => $title_page,
             'Colabors' => $Colaboradores
         ]);

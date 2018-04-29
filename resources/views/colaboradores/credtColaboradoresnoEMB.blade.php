@@ -94,42 +94,24 @@
                     <th>Servicio</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td><input type="checkbox"/></td>
-                    <td>Freddy Arcia
-                        <div class="OpcionesTabla"><a href="#">Editar</a> <span class="SeparadorOpcionesTablas">|</span>
-                            <a href="#">Eliminar</a></div>
-                    </td>
-                    <td>Grupo Arcia S.A.S</td>
-                    <td>Desarrollo Web</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox"/></td>
-                    <td>Luis Romero
-                        <div class="OpcionesTabla"><a href="#">Editar</a> <span class="SeparadorOpcionesTablas">|</span>
-                            <a href="#">Eliminar</a></div>
-                    </td>
-                    <td>Grupo Arcia S.A.S</td>
-                    <td>Desarrollo Web</td>
-                </tr>
+                <tbody id="tbColaboradores">
+                @foreach($Colabors as $colaborador)
+                    <tr>
+                        <td><input type="checkbox"/></td>
+                        <td>{!! $colaborador->nombre_Empleado !!}
+                            <div class="OpcionesTabla"><a onclick="editColabors({!! $colaborador->cod_Companias !!});">Editar</a> <span
+                                        class="SeparadorOpcionesTablas">|</span>
+                                <a onclick="eliminarColabors({!! $colaborador->cod_Companias !!});">Eliminar</a></div>
+                        </td>
+                        <td>Grupo Arcia S.A.S</td>
+                        <td>Desarrollo Web</td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
     </div>
 @endsection
 @section('scripts')
-    <script>
-        $(document).ready(function () {
-            $('#btnCerrarAlert').click(function () {
-                $('#AlertNoError').css('display', 'none');
-            });
-            $('#AddColaborador').click(function (e) {
-                if ($('#formulario').css('display') == 'none') {
-                    $('#formulario').css('display', '');
-                }
-            })
-        });
-    </script>
-
+    <script src="/JS/Colaboradores/colaboradores.js"></script>
 @endsection

@@ -134,7 +134,6 @@
 <script src="/JS/inputmask.extensions.js"></script>
 <script src="/JS/phone.js"></script>
 <script src="/JS/Util.js"></script>
-<script src="/JS/Empresas/empresas.js"></script>
 <script src="/JS/jqueryui/ui/widgets/dialog.js"></script>
 @yield('scripts')
 @yield('scriptsEMB')
