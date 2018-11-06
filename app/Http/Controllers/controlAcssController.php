@@ -70,7 +70,7 @@ class controlAcssController extends Controller
                 session(['menu'=>$menu]);
 
             return response()->json([
-                'msg'=>'/',
+                'msg'=>'',
                 'error'=>false
             ]);
         }
