@@ -22,7 +22,7 @@ function guardar(e) {
             success: function (resp) {
                 if (resp.msg != null) {
                     if (!resp.error) {
-                        ResetForm($('#empresa')[0], event);
+                        ResetForm($('#empresa')[0], e);
                         $('#errores').css('color', '#37474F');
                         $('#errores').html('');
                         $('#errores').css('visibility', 'none');

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class companiasController extends Controller
+class companiasController extends \App\Http\Controllers\Controller
 {
     /**
      * Display a listing of the resource.
