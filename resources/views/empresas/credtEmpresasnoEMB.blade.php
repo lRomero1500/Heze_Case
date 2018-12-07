@@ -101,7 +101,7 @@
                     <tr>
                         <td><input type="checkbox"/></td>
                         <td>{!! $compania->nomb_Companias !!}
-                            <div class="OpcionesTabla"><a onclick="editEmpresa({!! $compania->cod_Empleado !!});">Editar</a>
+                            <div class="OpcionesTabla"><a onclick="editEmpresa({!! $compania->cod_Companias.',event' !!});">Editar</a>
                                 <span class="SeparadorOpcionesTablas">|</span>
                                 <a onclick="eliminarEmpresa({!! $compania->cod_Companias !!});">Eliminar</a>
                             </div>
@@ -118,5 +118,7 @@
     </div>
 @endsection
 @section('scripts')
+    <script src="/JS/jquery.validate.min.js"></script>
+    <script src="/JS/jquery.validate.additional-methods.min.js"></script>
     <script src="/JS/Empresas/empresas.js"></script>
 @endsection

@@ -1,16 +1,26 @@
 /**
  * Created by luisd on 19/03/2018.
  */
+var form;
 
 function guardar(e) {
     InicioCarando();
-    var msj = ValidaFormulario($('#empresa')[0]);
-    if (msj.fallo) {
+    form = $('#empresa');
+    form.validate(/*{
+        showErrors: function (errorMap, errorList) {
+            e.preventDefault();
+            var errs = "";
+            $.each(errorList, function (index, item) {
+                errs += item.message+'</br>';
+            });
+            $('#errores').css('visibility', '');
+            $('#errores').html('');
+            $('#errores').html(errs);
+            FinCarando();
+        }
+    }*/);
+    if (!form.valid()) {
         e.preventDefault();
-        var re = msj.mensajes[0];
-        $('#errores').css('visibility', '');
-        $('#errores').html('');
-        $('#errores').html(re);
         FinCarando();
     }
     else {
@@ -77,7 +87,8 @@ function guardar(e) {
     }
 
 }
-function editEmpresa(idEmpresa) {
+
+function editEmpresa(idEmpresa, e) {
     InicioCarando();
     var url = baseUrl + 'getEmpresa/';
     $.ajax({
@@ -89,7 +100,7 @@ function editEmpresa(idEmpresa) {
                     $('#formulario').css('display', '');
                     crearMask('tel');
                 }
-                ResetForm($('#empresa')[0], event);
+                ResetForm($('#empresa')[0], e);
                 $('#idcompanias').prop('value', resp.cod_Companias);
                 $('#nomb_Companias').val(resp.nomb_Companias);
                 $('#nit_Companias').val(resp.nit_Companias);
@@ -112,6 +123,7 @@ function editEmpresa(idEmpresa) {
         }
     });
 }
+
 function eliminarEmpresa(idEmpresa) {
     InicioCarando();
     var url = baseUrl + 'deleteEmpresa/';
@@ -122,7 +134,7 @@ function eliminarEmpresa(idEmpresa) {
                 $.ajax({
                     type: 'POST',
                     url: url + idEmpresa,
-                    headers:{'X-CSRF-TOKEN':token},
+                    headers: {'X-CSRF-TOKEN': token},
                     data: JSON.stringify(parametros),
                     contentType: 'application/json; charset=UTF-8',
                     dataType: 'json',
@@ -160,7 +172,7 @@ function eliminarEmpresa(idEmpresa) {
                                     '<span style="color:#FFF" class="fa fa-exclamation fa-2x" aria-hidden="true"></span>' +
                                     '</td>' +
                                     '<td style="padding: 20px;text-align: justify;vertical-align: middle">' +
-                                    '<p style="text-wrap: none">'+resp.msg+'</p>' +
+                                    '<p style="text-wrap: none">' + resp.msg + '</p>' +
                                     '</td></tr></table></div>'
                                 );
                                 $("#Confirm").dialog("close");
@@ -176,7 +188,7 @@ function eliminarEmpresa(idEmpresa) {
                             '<span style="color:#FFF" class="fa fa-exclamation fa-2x" aria-hidden="true"></span>' +
                             '</td>' +
                             '<td style="padding: 20px;text-align: justify;vertical-align: middle">' +
-                            '<p style="text-wrap: none">'+errorThrown+'</p>' +
+                            '<p style="text-wrap: none">' + errorThrown + '</p>' +
                             '</td></tr></table></div>'
                         );
                         $("#Confirm").dialog("close");
