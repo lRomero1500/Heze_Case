@@ -28,17 +28,25 @@ class controlAcssController extends Controller
      */
     public function validaUsr(Request $request){
         $email=$request->only('usrName')['usrName'];
-        $data = (Empleados::where('email',$email)->first())['attributes'];
-        if($data!=null){
-            $nombre= (explode('/',$data['nombre_Empleado']))[2].' '.(explode('/',$data['nombre_Empleado']))[0];
-            $ini= mb_substr((explode('/',$data['nombre_Empleado']))[2],0,1).mb_substr((explode('/',$data['nombre_Empleado']))[0],0,1);
-            $msg=null;
+        try{
+            $data = (Empleados::where('email',$email)->first())['attributes'];
+            if($data!=null){
+                $nombre= (explode('/',$data['nombre_Empleado']))[2].' '.(explode('/',$data['nombre_Empleado']))[0];
+                $ini= mb_substr((explode('/',$data['nombre_Empleado']))[2],0,1).mb_substr((explode('/',$data['nombre_Empleado']))[0],0,1);
+                $msg=null;
+            }
+            else{
+                $nombre=null;
+                $ini= null;
+                $msg="Usuario No Existe";
+            }
         }
-        else{
+        catch (Exception $e){
             $nombre=null;
             $ini= null;
-            $msg="Usuario No Existe";
+            $msg=$e->getMessage();
         }
+
 
         return response()->json([
             'nombre'=>$nombre,
